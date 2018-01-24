@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="OutInDb" Class="OutInDBDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=ADOLFOROJAS\SQLEXPRESS;Initial Catalog=OutInDb;Integrated Security=True" SettingsObjectName="OutInDB.Properties.Settings" SettingsPropertyName="OutInDbConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.TbCargo" Member="TbCargo">
+    <Type Name="TbCargo">
+      <Column Name="ca_Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ca_Descripcion" Type="System.String" DbType="VarChar(40) NOT NULL" CanBeNull="false" />
+      <Association Name="TbCargo_TbEmpleados" Member="TbEmpleados" ThisKey="ca_Id" OtherKey="em_cargo" Type="TbEmpleados" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TbEmpleados" Member="TbEmpleados">
+    <Type Name="TbEmpleados">
+      <Column Name="em_identificacion" Type="System.String" DbType="VarChar(30) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="em_fechaNacimiento" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="em_nombre" Type="System.String" DbType="VarChar(70) NOT NULL" CanBeNull="false" />
+      <Column Name="em_contrasena" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="em_tipoId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="em_direccion" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="em_cargo" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="em_contacto" Type="System.String" DbType="VarChar(60) NOT NULL" CanBeNull="false" />
+      <Association Name="TbCargo_TbEmpleados" Member="TbCargo" ThisKey="em_cargo" OtherKey="ca_Id" Type="TbCargo" IsForeignKey="true" />
+      <Association Name="TbTipoId_TbEmpleados" Member="TbTipoId" ThisKey="em_tipoId" OtherKey="tid_Id" Type="TbTipoId" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TbTipoId" Member="TbTipoId">
+    <Type Name="TbTipoId">
+      <Column Name="tid_Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="tid_Nombre" Type="System.String" DbType="VarChar(5) NOT NULL" CanBeNull="false" />
+      <Column Name="tid_Descripcion" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Association Name="TbTipoId_TbEmpleados" Member="TbEmpleados" ThisKey="tid_Id" OtherKey="em_tipoId" Type="TbEmpleados" />
+    </Type>
+  </Table>
+  <Function Name="dbo.verEmpleados" Method="verEmpleados">
+    <ElementType Name="verEmpleadosResult">
+      <Column Name="Identificacion" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="[Fecha Nacimiento]" Member="Fecha_Nacimiento" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="VarChar(70) NOT NULL" CanBeNull="false" />
+      <Column Name="Contrasena" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="[Tipo Documento]" Member="Tipo_Documento" Type="System.String" DbType="VarChar(5) NOT NULL" CanBeNull="false" />
+      <Column Name="Direccion" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Cargo" Type="System.String" DbType="VarChar(40) NOT NULL" CanBeNull="false" />
+      <Column Name="[Telefono de Contacto]" Member="Telefono_de_Contacto" Type="System.String" DbType="VarChar(60) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.accederEmpleado" Method="accederEmpleado">
+    <Parameter Name="usuario" Type="System.String" DbType="VarChar(30)" />
+    <Parameter Name="contrasena" Type="System.String" DbType="VarChar(50)" />
+    <ElementType Name="accederEmpleadoResult">
+      <Column Name="Identificacion" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="[Fecha Nacimiento]" Member="Fecha_Nacimiento" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="VarChar(70) NOT NULL" CanBeNull="false" />
+      <Column Name="Contrasena" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="[Tipo Documento]" Member="Tipo_Documento" Type="System.String" DbType="VarChar(5) NOT NULL" CanBeNull="false" />
+      <Column Name="Direccion" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Cargo" Type="System.String" DbType="VarChar(40) NOT NULL" CanBeNull="false" />
+      <Column Name="[Telefono de Contacto]" Member="Telefono_de_Contacto" Type="System.String" DbType="VarChar(60) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+</Database>
