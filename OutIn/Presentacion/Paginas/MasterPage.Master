@@ -13,6 +13,8 @@
     <form id="form1" runat="server">
         <div>
            <header>
+               <asp:Button ID="btn_cat" runat="server" Text="Categoria" OnClick="btn_cat_Click" />
+               <asp:Button ID="btn_Productos" runat="server" Text="Productos" OnClick="btn_Productos_Click" />
              <asp:Button ID="btn_Cerrar" runat="server" OnClick="Button1_Click" Text="CerrarSession" />
            
             </header>

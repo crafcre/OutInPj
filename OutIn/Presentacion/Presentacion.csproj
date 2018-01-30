@@ -79,6 +79,10 @@
   <ItemGroup>
     <Content Include="Login.aspx" />
     <Content Include="Paginas\Empleados\Index.aspx" />
+    <Content Include="Paginas\Productos\form-categoria.aspx" />
+    <Content Include="Paginas\Productos\from-Producto.aspx" />
+    <Content Include="Paginas\Productos\index-cat.aspx" />
+    <Content Include="Paginas\Productos\Index.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -109,6 +113,34 @@
     </Compile>
     <Compile Include="Paginas\MasterPage.Master.designer.cs">
       <DependentUpon>MasterPage.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Paginas\Productos\form-categoria.aspx.cs">
+      <DependentUpon>form-categoria.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Paginas\Productos\form-categoria.aspx.designer.cs">
+      <DependentUpon>form-categoria.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Paginas\Productos\from-Producto.aspx.cs">
+      <DependentUpon>from-Producto.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Paginas\Productos\from-Producto.aspx.designer.cs">
+      <DependentUpon>from-Producto.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Paginas\Productos\index-cat.aspx.cs">
+      <DependentUpon>index-cat.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Paginas\Productos\index-cat.aspx.designer.cs">
+      <DependentUpon>index-cat.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Paginas\Productos\Index.aspx.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Paginas\Productos\Index.aspx.designer.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

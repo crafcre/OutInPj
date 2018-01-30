@@ -13,7 +13,7 @@ namespace Presentacion
         {
             if (Session["usuario"] == null)
             {
-                Response.Redirect("../Login.aspx");
+                Response.Redirect("../../Login.aspx");
             }
         }
 
@@ -21,6 +21,16 @@ namespace Presentacion
         {
             Session["usuario"] = null;
             Response.Redirect("../../Login.aspx");
+        }
+
+        protected void btn_Productos_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("../Productos/Index.aspx");
+        }
+
+        protected void btn_cat_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("../Productos/index-cat.aspx");
         }
     }
 }

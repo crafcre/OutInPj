@@ -29,6 +29,27 @@
       <Association Name="TbTipoId_TbEmpleados" Member="TbEmpleados" ThisKey="tid_Id" OtherKey="em_tipoId" Type="TbEmpleados" />
     </Type>
   </Table>
+  <Table Name="dbo.TbProducto" Member="TbProducto">
+    <Type Name="TbProducto">
+      <Column Name="pd_IdProducto" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="pd_Nombre" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="pd_Cantidad" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="pd_Precio" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="pd_Unidades" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="pd_StockMin" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="pd_StockMax" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="pd_CantidadXUnidad" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="pd_IdCategoria" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="TbCategoria_TbProducto" Member="TbCategoria" ThisKey="pd_IdCategoria" OtherKey="cat_Id" Type="TbCategoria" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TbCategoria" Member="TbCategoria">
+    <Type Name="TbCategoria">
+      <Column Name="cat_Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="cat_Descripcion" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="TbCategoria_TbProducto" Member="TbProducto" ThisKey="cat_Id" OtherKey="pd_IdCategoria" Type="TbProducto" />
+    </Type>
+  </Table>
   <Function Name="dbo.accederEmpleado" Method="accederEmpleado">
     <Parameter Name="usuario" Type="System.String" DbType="VarChar(30)" />
     <Parameter Name="contrasena" Type="System.String" DbType="VarChar(50)" />
@@ -69,5 +90,47 @@
   <Function Name="dbo.eliminarEmpleado" Method="eliminarEmpleado">
     <Parameter Name="id" Type="System.String" DbType="VarChar(30)" />
     <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.crearCatgoria" Method="crearCatgoria">
+    <Parameter Name="des" Type="System.String" DbType="VarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.crearProducto" Method="crearProducto">
+    <Parameter Name="nombre" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="cantidad" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Precio" Parameter="precio" Type="System.Decimal" DbType="Money" />
+    <Parameter Name="Unidades" Parameter="unidades" Type="System.Int32" DbType="Int" />
+    <Parameter Name="sMin" Type="System.Int32" DbType="Int" />
+    <Parameter Name="sMax" Type="System.Int32" DbType="Int" />
+    <Parameter Name="cantXunidad" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="Cat" Parameter="cat" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.eliminarCategoria" Method="eliminarCategoria">
+    <Parameter Name="id" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.eliminarProducto" Method="eliminarProducto">
+    <Parameter Name="id" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.listarCatgoria" Method="listarCatgoria">
+    <ElementType Name="listarCatgoriaResult">
+      <Column Name="cat_Id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="cat_Descripcion" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.listarProductos" Method="listarProductos">
+    <ElementType Name="listarProductosResult">
+      <Column Name="pd_IdProducto" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="pd_Nombre" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="pd_Cantidad" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="pd_Precio" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="pd_Unidades" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="pd_StockMin" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="pd_StockMax" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="pd_CantidadXUnidad" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="cat_Descripcion" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+    </ElementType>
   </Function>
 </Database>
