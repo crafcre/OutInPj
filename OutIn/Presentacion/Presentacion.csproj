@@ -66,6 +66,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Paginas\Empleados\ingEmpleado.aspx" />
     <Content Include="Paginas\MasterPage.Master" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
@@ -77,7 +78,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Login.aspx" />
-    <Content Include="Paginas\Index.aspx" />
+    <Content Include="Paginas\Empleados\Index.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -88,12 +89,19 @@
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Paginas\Index.aspx.cs">
+    <Compile Include="Paginas\Empleados\Index.aspx.cs">
       <DependentUpon>Index.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Paginas\Index.aspx.designer.cs">
+    <Compile Include="Paginas\Empleados\Index.aspx.designer.cs">
       <DependentUpon>Index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Paginas\Empleados\ingEmpleado.aspx.cs">
+      <DependentUpon>ingEmpleado.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Paginas\Empleados\ingEmpleado.aspx.designer.cs">
+      <DependentUpon>ingEmpleado.aspx</DependentUpon>
     </Compile>
     <Compile Include="Paginas\MasterPage.Master.cs">
       <DependentUpon>MasterPage.Master</DependentUpon>

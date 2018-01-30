@@ -15,7 +15,7 @@ namespace Presentacion
         {
             if (Session["usuario"] != null)
             {
-                Response.Redirect("Paginas/Index.aspx");
+                Response.Redirect("Paginas/Empleados/Index.aspx");
             }
         }
 
@@ -30,7 +30,7 @@ namespace Presentacion
                     Session["usuario"] = usuario;
                     lbl_info.Text = "Accediste Correctamente " + usuario.Nombre;
                     lbl_info.Visible = true;
-                    Response.Redirect("Paginas/Index.aspx");
+                    Response.Redirect("Paginas/Empleados/Index.aspx");
                 }
                 else
                 {

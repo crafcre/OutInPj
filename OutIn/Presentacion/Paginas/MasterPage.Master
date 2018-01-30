@@ -5,17 +5,24 @@
 <html>
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title></title>
+    <title>Outin</title>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
 <body>
     <form id="form1" runat="server">
         <div>
+           <header>
              <asp:Button ID="btn_Cerrar" runat="server" OnClick="Button1_Click" Text="CerrarSession" />
-            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-               
+           
+            </header>
+            
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">               
             </asp:ContentPlaceHolder>
+
+            <footer>
+
+            </footer>
         </div>
     </form>
 </body>

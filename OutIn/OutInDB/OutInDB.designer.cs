@@ -42,7 +42,7 @@ namespace OutInDB
     #endregion
 		
 		public OutInDBDataContext() : 
-				base(global::OutInDB.Properties.Settings.Default.OutInDbConnectionString, mappingSource)
+				base(global::OutInDB.Properties.Settings.Default.OutInDbConnectionString1, mappingSource)
 		{
 			OnCreated();
 		}
@@ -95,6 +95,13 @@ namespace OutInDB
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.accederEmpleado")]
+		public ISingleResult<accederEmpleadoResult> accederEmpleado([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(30)")] string usuario, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(50)")] string contrasena)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), usuario, contrasena);
+			return ((ISingleResult<accederEmpleadoResult>)(result.ReturnValue));
+		}
+		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.verEmpleados")]
 		public ISingleResult<verEmpleadosResult> verEmpleados()
 		{
@@ -102,11 +109,18 @@ namespace OutInDB
 			return ((ISingleResult<verEmpleadosResult>)(result.ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.accederEmpleado")]
-		public ISingleResult<accederEmpleadoResult> accederEmpleado([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(30)")] string usuario, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(50)")] string contrasena)
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.registrarEmpleado")]
+		public int registrarEmpleado([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(30)")] string id, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Date")] System.Nullable<System.DateTime> nacimiento, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(70)")] string nombre, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(50)")] string contrasena, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> tipo, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(50)")] string dir, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> cargo, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(60)")] string telefono)
 		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), usuario, contrasena);
-			return ((ISingleResult<accederEmpleadoResult>)(result.ReturnValue));
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), id, nacimiento, nombre, contrasena, tipo, dir, cargo, telefono);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.eliminarEmpleado")]
+		public int eliminarEmpleado([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(30)")] string id)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), id);
+			return ((int)(result.ReturnValue));
 		}
 	}
 	
@@ -674,7 +688,7 @@ namespace OutInDB
 		}
 	}
 	
-	public partial class verEmpleadosResult
+	public partial class accederEmpleadoResult
 	{
 		
 		private string _Identificacion;
@@ -693,7 +707,7 @@ namespace OutInDB
 		
 		private string _Telefono_de_Contacto;
 		
-		public verEmpleadosResult()
+		public accederEmpleadoResult()
 		{
 		}
 		
@@ -826,7 +840,7 @@ namespace OutInDB
 		}
 	}
 	
-	public partial class accederEmpleadoResult
+	public partial class verEmpleadosResult
 	{
 		
 		private string _Identificacion;
@@ -845,7 +859,7 @@ namespace OutInDB
 		
 		private string _Telefono_de_Contacto;
 		
-		public accederEmpleadoResult()
+		public verEmpleadosResult()
 		{
 		}
 		

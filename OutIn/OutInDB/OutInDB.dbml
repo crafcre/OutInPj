@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="OutInDb" Class="OutInDBDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=ADOLFOROJAS\SQLEXPRESS;Initial Catalog=OutInDb;Integrated Security=True" SettingsObjectName="OutInDB.Properties.Settings" SettingsPropertyName="OutInDbConnectionString" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=DESKTOP-2G5FPU9;Initial Catalog=OutInDb;Integrated Security=True" SettingsObjectName="OutInDB.Properties.Settings" SettingsPropertyName="OutInDbConnectionString1" Provider="System.Data.SqlClient" />
   <Table Name="dbo.TbCargo" Member="TbCargo">
     <Type Name="TbCargo">
       <Column Name="ca_Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -29,18 +29,6 @@
       <Association Name="TbTipoId_TbEmpleados" Member="TbEmpleados" ThisKey="tid_Id" OtherKey="em_tipoId" Type="TbEmpleados" />
     </Type>
   </Table>
-  <Function Name="dbo.verEmpleados" Method="verEmpleados">
-    <ElementType Name="verEmpleadosResult">
-      <Column Name="Identificacion" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
-      <Column Name="[Fecha Nacimiento]" Member="Fecha_Nacimiento" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
-      <Column Name="Nombre" Type="System.String" DbType="VarChar(70) NOT NULL" CanBeNull="false" />
-      <Column Name="Contrasena" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="[Tipo Documento]" Member="Tipo_Documento" Type="System.String" DbType="VarChar(5) NOT NULL" CanBeNull="false" />
-      <Column Name="Direccion" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="Cargo" Type="System.String" DbType="VarChar(40) NOT NULL" CanBeNull="false" />
-      <Column Name="[Telefono de Contacto]" Member="Telefono_de_Contacto" Type="System.String" DbType="VarChar(60) NOT NULL" CanBeNull="false" />
-    </ElementType>
-  </Function>
   <Function Name="dbo.accederEmpleado" Method="accederEmpleado">
     <Parameter Name="usuario" Type="System.String" DbType="VarChar(30)" />
     <Parameter Name="contrasena" Type="System.String" DbType="VarChar(50)" />
@@ -54,5 +42,32 @@
       <Column Name="Cargo" Type="System.String" DbType="VarChar(40) NOT NULL" CanBeNull="false" />
       <Column Name="[Telefono de Contacto]" Member="Telefono_de_Contacto" Type="System.String" DbType="VarChar(60) NOT NULL" CanBeNull="false" />
     </ElementType>
+  </Function>
+  <Function Name="dbo.verEmpleados" Method="verEmpleados">
+    <ElementType Name="verEmpleadosResult">
+      <Column Name="Identificacion" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="[Fecha Nacimiento]" Member="Fecha_Nacimiento" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="VarChar(70) NOT NULL" CanBeNull="false" />
+      <Column Name="Contrasena" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="[Tipo Documento]" Member="Tipo_Documento" Type="System.String" DbType="VarChar(5) NOT NULL" CanBeNull="false" />
+      <Column Name="Direccion" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Cargo" Type="System.String" DbType="VarChar(40) NOT NULL" CanBeNull="false" />
+      <Column Name="[Telefono de Contacto]" Member="Telefono_de_Contacto" Type="System.String" DbType="VarChar(60) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.registrarEmpleado" Method="registrarEmpleado">
+    <Parameter Name="id" Type="System.String" DbType="VarChar(30)" />
+    <Parameter Name="nacimiento" Type="System.DateTime" DbType="Date" />
+    <Parameter Name="nombre" Type="System.String" DbType="VarChar(70)" />
+    <Parameter Name="contrasena" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="tipo" Type="System.Int32" DbType="Int" />
+    <Parameter Name="dir" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="cargo" Type="System.Int32" DbType="Int" />
+    <Parameter Name="telefono" Type="System.String" DbType="VarChar(60)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.eliminarEmpleado" Method="eliminarEmpleado">
+    <Parameter Name="id" Type="System.String" DbType="VarChar(30)" />
+    <Return Type="System.Int32" />
   </Function>
 </Database>

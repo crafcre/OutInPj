@@ -2,36 +2,36 @@
 <ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="OutInDB">
   <DataContextMoniker Name="/OutInDBDataContext" />
   <nestedChildShapes>
-    <classShape Id="147dcfa0-aee7-4fe6-bcca-86d0cffd7e7a" absoluteBounds="0.75, 1.5, 2, 1.1939925130208335">
+    <classShape Id="0941824d-f5ca-4249-a575-abbef0fd3100" absoluteBounds="0.75, 1.5, 2, 1.1939925130208335">
       <DataClassMoniker Name="/OutInDBDataContext/TbCargo" />
       <nestedChildShapes>
-        <elementListCompartment Id="59578479-4df5-4da1-a1e5-e91553c533e7" absoluteBounds="0.765, 1.96, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="0a84a7c7-bd5a-4cdf-82f7-d97b64d630bf" absoluteBounds="0.765, 1.96, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="25d23e8b-3982-4464-9256-00822cfce7e9" absoluteBounds="3.5, 1, 2, 2.3478011067708335">
+    <classShape Id="c84c91e9-3ce3-4291-8743-fee05a515995" absoluteBounds="3.5, 1, 2, 2.3478011067708335">
       <DataClassMoniker Name="/OutInDBDataContext/TbEmpleados" />
       <nestedChildShapes>
-        <elementListCompartment Id="7c887bec-762e-487d-a3c1-9ffd57f5aca5" absoluteBounds="3.515, 1.46, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="a1c41051-c48c-454e-b97c-f771b2934796" absoluteBounds="3.515, 1.46, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="b8cb4bac-28c9-4853-ab72-1db3b5058c4e" absoluteBounds="0.75, 5.375, 2, 1.3862939453125005">
+    <classShape Id="1d0afbc7-40c0-45fa-b9b9-14dc2d3c6945" absoluteBounds="0.75, 5.375, 2, 1.3862939453125005">
       <DataClassMoniker Name="/OutInDBDataContext/TbTipoId" />
       <nestedChildShapes>
-        <elementListCompartment Id="91b9acf4-d569-4edc-a91d-b4a207029234" absoluteBounds="0.765, 5.835, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="a27aaaec-683b-4df0-9ade-262ac52d3146" absoluteBounds="0.765, 5.835, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(2.75 : 2.09699625651042); (3.5 : 2.09699625651042)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(2.75 : 2.09699625651042); (3.5 : 2.09699625651042)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/OutInDBDataContext/TbCargo/TbCargo_TbEmpleados" />
       <nodes>
-        <classShapeMoniker Id="147dcfa0-aee7-4fe6-bcca-86d0cffd7e7a" />
-        <classShapeMoniker Id="25d23e8b-3982-4464-9256-00822cfce7e9" />
+        <classShapeMoniker Id="0941824d-f5ca-4249-a575-abbef0fd3100" />
+        <classShapeMoniker Id="c84c91e9-3ce3-4291-8743-fee05a515995" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(2.75 : 6.06814697265625); (4.5 : 6.06814697265625); (4.5 : 3.34780110677083)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(2.75 : 6.06814697265625); (4.5 : 6.06814697265625); (4.5 : 3.34780110677083)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/OutInDBDataContext/TbTipoId/TbTipoId_TbEmpleados" />
       <nodes>
-        <classShapeMoniker Id="b8cb4bac-28c9-4853-ab72-1db3b5058c4e" />
-        <classShapeMoniker Id="25d23e8b-3982-4464-9256-00822cfce7e9" />
+        <classShapeMoniker Id="1d0afbc7-40c0-45fa-b9b9-14dc2d3c6945" />
+        <classShapeMoniker Id="c84c91e9-3ce3-4291-8743-fee05a515995" />
       </nodes>
     </associationConnector>
   </nestedChildShapes>
