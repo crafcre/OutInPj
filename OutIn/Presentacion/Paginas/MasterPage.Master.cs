@@ -32,5 +32,10 @@ namespace Presentacion
         {
             Response.Redirect("../Productos/index-cat.aspx");
         }
+
+        protected void btn_pv_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("../Proveedores/index-proveedores.aspx");
+        }
     }
 }

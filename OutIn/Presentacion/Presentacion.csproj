@@ -83,6 +83,8 @@
     <Content Include="Paginas\Productos\from-Producto.aspx" />
     <Content Include="Paginas\Productos\index-cat.aspx" />
     <Content Include="Paginas\Productos\Index.aspx" />
+    <Content Include="Paginas\Proveedores\index-proveedores.aspx" />
+    <Content Include="Paginas\Proveedores\Ingresar_Proveedores.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -141,6 +143,20 @@
     </Compile>
     <Compile Include="Paginas\Productos\Index.aspx.designer.cs">
       <DependentUpon>Index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Paginas\Proveedores\index-proveedores.aspx.cs">
+      <DependentUpon>index-proveedores.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Paginas\Proveedores\index-proveedores.aspx.designer.cs">
+      <DependentUpon>index-proveedores.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Paginas\Proveedores\Ingresar_Proveedores.aspx.cs">
+      <DependentUpon>Ingresar_Proveedores.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Paginas\Proveedores\Ingresar_Proveedores.aspx.designer.cs">
+      <DependentUpon>Ingresar_Proveedores.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

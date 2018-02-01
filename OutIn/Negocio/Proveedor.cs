@@ -7,21 +7,21 @@ using OutInDB;
 
 namespace Negocio
 {
-    public class Producto:Respuesta
+    public class Proveedor:Respuesta
     {
         OutInDBDataContext datos = new OutInDBDataContext();
 
         // ------------------------------------------------------
 
 
-        public List<listarProductosResult> listarProductos()
-        {// mostrar un listado de las categorias
+        public List<listarProveedorResult> listarProveedores()
+        {// mostrar un listado de los proveedores
             try
             {
-                List<listarProductosResult> lisProductos = datos.listarProductos().ToList();
+                List<listarProveedorResult> lisProveedor = datos.listarProveedor().ToList();
                 Codigo = "OK";
                 Rta = "Se realizo correctamente";
-                return lisProductos;
+                return lisProveedor;
             }
             catch (Exception ex)
             {
@@ -30,21 +30,11 @@ namespace Negocio
                 return null;
             }
         }
-        public bool registraProducto(string nombre, int cant,decimal precio, int unidades, int sMin, int sMax, string cantXuni, int cat)
-        {// registrar un producto a la base de datos
+        public bool registraProveedor(string nombre, string contacto, string direccion)
+        {// registrar un proveedor a la base de datos
             try
             {
-                /*
-                int c = 0;
-                switch (cat)
-                {
-                    case "Cereales":
-                        c = 1;
-                        break;
-                    default:
-                        break;
-                }*/
-                datos.crearProducto(nombre,cant,precio,unidades,sMin,sMax,cantXuni,cat);
+                datos.InsertarProveedor(nombre, contacto,direccion );
                 return true;
             }
             catch (Exception ex)
@@ -53,11 +43,11 @@ namespace Negocio
                 return false;
             }
         }
-        public bool EliminarProducto(int id)
+        public bool EliminarProveedor(int id)
         {
             try
             {
-                datos.eliminarProducto(id);
+                datos.eliminarProveedor(id);
                 Codigo = "OK";
                 Rta = "Se Eliminó el contacto correctamente";
                 return true;
@@ -70,6 +60,11 @@ namespace Negocio
             }
 
         }
+
+
+
+
+
+
     }
 }
-

@@ -27,7 +27,7 @@ namespace Presentacion.Paginas.Productos
         {
             try
             {
-                pr.registraProducto(txt_Nombre.Text, Convert.ToInt32(txt_Cant.Text), Convert.ToDecimal(txt_Precio.Text), Convert.ToInt32(txt_Unidades.Text), Convert.ToInt32(txt_sMin.Text), Convert.ToInt32(txt_sMax.Text), txt_canXunidad.Text, drl_Categoria.Text);
+                pr.registraProducto(txt_Nombre.Text, Convert.ToInt32(txt_Cant.Text), Convert.ToDecimal(txt_Precio.Text), Convert.ToInt32(txt_Unidades.Text), Convert.ToInt32(txt_sMin.Text), Convert.ToInt32(txt_sMax.Text), txt_canXunidad.Text,Convert.ToInt32( drl_Categoria.SelectedValue));
                 lbl_Info.Text = "OK";
                 Response.Redirect("Index.aspx");
             }
