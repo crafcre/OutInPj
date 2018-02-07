@@ -31,6 +31,7 @@ namespace Presentacion
                     lbl_info.Text = "Accediste Correctamente " + usuario.Nombre;
                     lbl_info.Visible = true;
                     Response.Redirect("Paginas/Empleados/Index.aspx");
+                    
                 }
                 else
                 {

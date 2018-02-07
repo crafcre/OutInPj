@@ -1,16 +1,17 @@
-﻿using System;
+﻿using OutInDB;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using OutInDB;
 
 namespace Negocio
 {
-    public class Empleado:Respuesta
-    {// controlador de los empleados
+    public class Movimiento:Respuesta
+    {// controlador de los movimientos
         OutInDBDataContext datos = new OutInDBDataContext();
-        public  accederEmpleadoResult ingresar(string usu, string pass)
+        /*
+        public accederEmpleadoResult ingresar(string usu, string pass)
         {// validar el ingreso de un empleado
             try
             {
@@ -26,22 +27,7 @@ namespace Negocio
                 return null;
             }
         }
-        public List<verEmpleadosResult> listarEmpleado()
-        {// mostrar un listado de los empleados
-            try
-            {
-                List<verEmpleadosResult> lisEmpleado = datos.verEmpleados().ToList();
-                Codigo = "OK";
-                Rta = "Se realizo correctamente";
-                return lisEmpleado;
-            }
-            catch (Exception ex)
-            {
-                Codigo = "Error";
-                Rta = ex.Message;
-                return null;
-            }
-        }
+        
         public bool registraEmpleado(string id, DateTime nacimiento, string nombre, string contrasena, string tipo, string direccion, string cargo, string contacto)
         {// registrar un empleado a la base de datos
             try
@@ -67,14 +53,13 @@ namespace Negocio
                     case "Cajero":
                         ca = 2;
                         break;
-                 case "Almacenista":
+                    case "Almacenista":
                         ca = 3;
                         break;
                     default:
                         break;
                 }
-                
-                int c = datos.registrarEmpleado(id, nacimiento, nombre, contrasena, ti, direccion, ca, contacto);
+                datos.registrarEmpleado(id, nacimiento, nombre, contrasena, ti, direccion, ca, contacto);
                 return true;
             }
             catch (Exception ex)
@@ -100,5 +85,23 @@ namespace Negocio
             }
 
         }
+        */
+        public List<listar_MovimientosResult> listarMovimiento()
+        {// mostrar un listado de los movimientos
+            try
+            {
+                List<listar_MovimientosResult> lisMov = datos.listar_Movimientos().ToList();
+                Codigo = "OK";
+                Rta = "Se realizo correctamente";
+                return lisMov;
+            }
+            catch (Exception ex)
+            {
+                Codigo = "Error";
+                Rta = ex.Message;
+                return null;
+            }
+        }
     }
 }
+

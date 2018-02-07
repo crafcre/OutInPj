@@ -14,28 +14,39 @@ namespace Presentacion
             if (Session["usuario"] == null)
             {
                 Response.Redirect("../../Login.aspx");
+                
             }
         }
 
         protected void Button1_Click(object sender, EventArgs e)
         {
             Session["usuario"] = null;
-            Response.Redirect("../../Login.aspx");
+            Response.Redirect("~/Login.aspx");
         }
 
         protected void btn_Productos_Click(object sender, EventArgs e)
         {
-            Response.Redirect("../Productos/Index.aspx");
+            Response.Redirect("~/Paginas/Productos/Index.aspx");
         }
 
         protected void btn_cat_Click(object sender, EventArgs e)
         {
-            Response.Redirect("../Productos/index-cat.aspx");
+            Response.Redirect("~/Paginas/Productos/index-cat.aspx");
         }
 
         protected void btn_pv_Click(object sender, EventArgs e)
         {
-            Response.Redirect("../Proveedores/index-proveedores.aspx");
+            Response.Redirect("~/Paginas/Proveedores/index-proveedores.aspx");
+        }
+
+        protected void Button1_Click1(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Paginas/Movimientos/VistaMov.aspx");
+        }
+
+        protected void btn_ventas_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Paginas/Movimientos/ventas/Vistaventas.aspx");
         }
     }
 }

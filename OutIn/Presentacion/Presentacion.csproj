@@ -79,6 +79,10 @@
   <ItemGroup>
     <Content Include="Login.aspx" />
     <Content Include="Paginas\Empleados\Index.aspx" />
+    <Content Include="Paginas\Movimientos\Orden_Compra\IngresarOC.aspx" />
+    <Content Include="Paginas\Movimientos\Orden_Compra\VistaOC.aspx" />
+    <Content Include="Paginas\Movimientos\ventas\Vistaventas.aspx" />
+    <Content Include="Paginas\Movimientos\VistaMov.aspx" />
     <Content Include="Paginas\Productos\form-categoria.aspx" />
     <Content Include="Paginas\Productos\from-Producto.aspx" />
     <Content Include="Paginas\Productos\index-cat.aspx" />
@@ -115,6 +119,34 @@
     </Compile>
     <Compile Include="Paginas\MasterPage.Master.designer.cs">
       <DependentUpon>MasterPage.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Paginas\Movimientos\Orden_Compra\IngresarOC.aspx.cs">
+      <DependentUpon>IngresarOC.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Paginas\Movimientos\Orden_Compra\IngresarOC.aspx.designer.cs">
+      <DependentUpon>IngresarOC.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Paginas\Movimientos\Orden_Compra\VistaOC.aspx.cs">
+      <DependentUpon>VistaOC.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Paginas\Movimientos\Orden_Compra\VistaOC.aspx.designer.cs">
+      <DependentUpon>VistaOC.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Paginas\Movimientos\ventas\Vistaventas.aspx.cs">
+      <DependentUpon>Vistaventas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Paginas\Movimientos\ventas\Vistaventas.aspx.designer.cs">
+      <DependentUpon>Vistaventas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Paginas\Movimientos\VistaMov.aspx.cs">
+      <DependentUpon>VistaMov.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Paginas\Movimientos\VistaMov.aspx.designer.cs">
+      <DependentUpon>VistaMov.aspx</DependentUpon>
     </Compile>
     <Compile Include="Paginas\Productos\form-categoria.aspx.cs">
       <DependentUpon>form-categoria.aspx</DependentUpon>

@@ -53,5 +53,15 @@ namespace OutInDB.Properties {
                 return ((string)(this["OutInDbConnectionString2"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-A1PQ06J;Initial Catalog=outinDB;Integrated Security=True")]
+        public string outinDBConnectionString3 {
+            get {
+                return ((string)(this["outinDBConnectionString3"]));
+            }
+        }
     }
 }

@@ -22,7 +22,7 @@ namespace OutInDB
 	using System;
 	
 	
-	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="OutInDb")]
+	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="outinDB")]
 	public partial class OutInDBDataContext : System.Data.Linq.DataContext
 	{
 		
@@ -33,6 +33,9 @@ namespace OutInDB
     partial void InsertTbCargo(TbCargo instance);
     partial void UpdateTbCargo(TbCargo instance);
     partial void DeleteTbCargo(TbCargo instance);
+    partial void InsertTbTipoMovimiento(TbTipoMovimiento instance);
+    partial void UpdateTbTipoMovimiento(TbTipoMovimiento instance);
+    partial void DeleteTbTipoMovimiento(TbTipoMovimiento instance);
     partial void InsertTbCategoria(TbCategoria instance);
     partial void UpdateTbCategoria(TbCategoria instance);
     partial void DeleteTbCategoria(TbCategoria instance);
@@ -48,13 +51,10 @@ namespace OutInDB
     partial void InsertTbTipoId(TbTipoId instance);
     partial void UpdateTbTipoId(TbTipoId instance);
     partial void DeleteTbTipoId(TbTipoId instance);
-    partial void InsertTbTipoMovimiento(TbTipoMovimiento instance);
-    partial void UpdateTbTipoMovimiento(TbTipoMovimiento instance);
-    partial void DeleteTbTipoMovimiento(TbTipoMovimiento instance);
     #endregion
 		
 		public OutInDBDataContext() : 
-				base(global::OutInDB.Properties.Settings.Default.OutInDbConnectionString2, mappingSource)
+				base(global::OutInDB.Properties.Settings.Default.outinDBConnectionString3, mappingSource)
 		{
 			OnCreated();
 		}
@@ -88,6 +88,14 @@ namespace OutInDB
 			get
 			{
 				return this.GetTable<TbCargo>();
+			}
+		}
+		
+		public System.Data.Linq.Table<TbTipoMovimiento> TbTipoMovimiento
+		{
+			get
+			{
+				return this.GetTable<TbTipoMovimiento>();
 			}
 		}
 		
@@ -147,12 +155,11 @@ namespace OutInDB
 			}
 		}
 		
-		public System.Data.Linq.Table<TbTipoMovimiento> TbTipoMovimiento
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.verEmpleados")]
+		public ISingleResult<verEmpleadosResult> verEmpleados()
 		{
-			get
-			{
-				return this.GetTable<TbTipoMovimiento>();
-			}
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
+			return ((ISingleResult<verEmpleadosResult>)(result.ReturnValue));
 		}
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.accederEmpleado")]
@@ -160,13 +167,6 @@ namespace OutInDB
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), usuario, contrasena);
 			return ((ISingleResult<accederEmpleadoResult>)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.verEmpleados")]
-		public ISingleResult<verEmpleadosResult> verEmpleados()
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
-			return ((ISingleResult<verEmpleadosResult>)(result.ReturnValue));
 		}
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.crearCatgoria")]
@@ -232,6 +232,20 @@ namespace OutInDB
 			return ((int)(result.ReturnValue));
 		}
 		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.listacambiocliente")]
+		public int listacambiocliente([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> lchequeo, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(50)")] string movimientoinv)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), lchequeo, movimientoinv);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.listadevolucion")]
+		public int listadevolucion([global::System.Data.Linq.Mapping.ParameterAttribute(Name="MovimientoInventario", DbType="Int")] System.Nullable<int> movimientoInventario, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(25)")] string tipo)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), movimientoInventario, tipo);
+			return ((int)(result.ReturnValue));
+		}
+		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.listar_Movimientos")]
 		public ISingleResult<listar_MovimientosResult> listar_Movimientos()
 		{
@@ -272,6 +286,13 @@ namespace OutInDB
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), id, nacimiento, nombre, contrasena, tipo, dir, cargo, telefono);
 			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.listarventa")]
+		public ISingleResult<listarventaResult> listarventa()
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
+			return ((ISingleResult<listarventaResult>)(result.ReturnValue));
 		}
 	}
 	
@@ -386,6 +407,120 @@ namespace OutInDB
 		{
 			this.SendPropertyChanging();
 			entity.TbCargo = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TbTipoMovimiento")]
+	public partial class TbTipoMovimiento : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Tmo_IdTipoMovimiento;
+		
+		private string _Tmo_Nombre;
+		
+		private EntitySet<TbMovimiento> _TbMovimiento;
+		
+    #region Definiciones de métodos de extensibilidad
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnTmo_IdTipoMovimientoChanging(int value);
+    partial void OnTmo_IdTipoMovimientoChanged();
+    partial void OnTmo_NombreChanging(string value);
+    partial void OnTmo_NombreChanged();
+    #endregion
+		
+		public TbTipoMovimiento()
+		{
+			this._TbMovimiento = new EntitySet<TbMovimiento>(new Action<TbMovimiento>(this.attach_TbMovimiento), new Action<TbMovimiento>(this.detach_TbMovimiento));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Tmo_IdTipoMovimiento", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Tmo_IdTipoMovimiento
+		{
+			get
+			{
+				return this._Tmo_IdTipoMovimiento;
+			}
+			set
+			{
+				if ((this._Tmo_IdTipoMovimiento != value))
+				{
+					this.OnTmo_IdTipoMovimientoChanging(value);
+					this.SendPropertyChanging();
+					this._Tmo_IdTipoMovimiento = value;
+					this.SendPropertyChanged("Tmo_IdTipoMovimiento");
+					this.OnTmo_IdTipoMovimientoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Tmo_Nombre", DbType="VarChar(25) NOT NULL", CanBeNull=false)]
+		public string Tmo_Nombre
+		{
+			get
+			{
+				return this._Tmo_Nombre;
+			}
+			set
+			{
+				if ((this._Tmo_Nombre != value))
+				{
+					this.OnTmo_NombreChanging(value);
+					this.SendPropertyChanging();
+					this._Tmo_Nombre = value;
+					this.SendPropertyChanged("Tmo_Nombre");
+					this.OnTmo_NombreChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TbTipoMovimiento_TbMovimiento", Storage="_TbMovimiento", ThisKey="Tmo_IdTipoMovimiento", OtherKey="mo_IdTipo")]
+		public EntitySet<TbMovimiento> TbMovimiento
+		{
+			get
+			{
+				return this._TbMovimiento;
+			}
+			set
+			{
+				this._TbMovimiento.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_TbMovimiento(TbMovimiento entity)
+		{
+			this.SendPropertyChanging();
+			entity.TbTipoMovimiento = this;
+		}
+		
+		private void detach_TbMovimiento(TbMovimiento entity)
+		{
+			this.SendPropertyChanging();
+			entity.TbTipoMovimiento = null;
 		}
 	}
 	
@@ -867,9 +1002,9 @@ namespace OutInDB
 		
 		private EntityRef<TbEmpleados> _TbEmpleados;
 		
-		private EntityRef<TbProducto> _TbProducto;
-		
 		private EntityRef<TbTipoMovimiento> _TbTipoMovimiento;
+		
+		private EntityRef<TbProducto> _TbProducto;
 		
     #region Definiciones de métodos de extensibilidad
     partial void OnLoaded();
@@ -896,8 +1031,8 @@ namespace OutInDB
 		public TbMovimiento()
 		{
 			this._TbEmpleados = default(EntityRef<TbEmpleados>);
-			this._TbProducto = default(EntityRef<TbProducto>);
 			this._TbTipoMovimiento = default(EntityRef<TbTipoMovimiento>);
+			this._TbProducto = default(EntityRef<TbProducto>);
 			OnCreated();
 		}
 		
@@ -1107,40 +1242,6 @@ namespace OutInDB
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TbProducto_TbMovimiento", Storage="_TbProducto", ThisKey="mo_IdProducto", OtherKey="pd_IdProducto", IsForeignKey=true)]
-		public TbProducto TbProducto
-		{
-			get
-			{
-				return this._TbProducto.Entity;
-			}
-			set
-			{
-				TbProducto previousValue = this._TbProducto.Entity;
-				if (((previousValue != value) 
-							|| (this._TbProducto.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._TbProducto.Entity = null;
-						previousValue.TbMovimiento.Remove(this);
-					}
-					this._TbProducto.Entity = value;
-					if ((value != null))
-					{
-						value.TbMovimiento.Add(this);
-						this._mo_IdProducto = value.pd_IdProducto;
-					}
-					else
-					{
-						this._mo_IdProducto = default(int);
-					}
-					this.SendPropertyChanged("TbProducto");
-				}
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TbTipoMovimiento_TbMovimiento", Storage="_TbTipoMovimiento", ThisKey="mo_IdTipo", OtherKey="Tmo_IdTipoMovimiento", IsForeignKey=true)]
 		public TbTipoMovimiento TbTipoMovimiento
 		{
@@ -1171,6 +1272,40 @@ namespace OutInDB
 						this._mo_IdTipo = default(int);
 					}
 					this.SendPropertyChanged("TbTipoMovimiento");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TbProducto_TbMovimiento", Storage="_TbProducto", ThisKey="mo_IdProducto", OtherKey="pd_IdProducto", IsForeignKey=true)]
+		public TbProducto TbProducto
+		{
+			get
+			{
+				return this._TbProducto.Entity;
+			}
+			set
+			{
+				TbProducto previousValue = this._TbProducto.Entity;
+				if (((previousValue != value) 
+							|| (this._TbProducto.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._TbProducto.Entity = null;
+						previousValue.TbMovimiento.Remove(this);
+					}
+					this._TbProducto.Entity = value;
+					if ((value != null))
+					{
+						value.TbMovimiento.Add(this);
+						this._mo_IdProducto = value.pd_IdProducto;
+					}
+					else
+					{
+						this._mo_IdProducto = default(int);
+					}
+					this.SendPropertyChanged("TbProducto");
 				}
 			}
 		}
@@ -1783,121 +1918,7 @@ namespace OutInDB
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TbTipoMovimiento")]
-	public partial class TbTipoMovimiento : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _Tmo_IdTipoMovimiento;
-		
-		private string _Tmo_Nombre;
-		
-		private EntitySet<TbMovimiento> _TbMovimiento;
-		
-    #region Definiciones de métodos de extensibilidad
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnTmo_IdTipoMovimientoChanging(int value);
-    partial void OnTmo_IdTipoMovimientoChanged();
-    partial void OnTmo_NombreChanging(string value);
-    partial void OnTmo_NombreChanged();
-    #endregion
-		
-		public TbTipoMovimiento()
-		{
-			this._TbMovimiento = new EntitySet<TbMovimiento>(new Action<TbMovimiento>(this.attach_TbMovimiento), new Action<TbMovimiento>(this.detach_TbMovimiento));
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Tmo_IdTipoMovimiento", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int Tmo_IdTipoMovimiento
-		{
-			get
-			{
-				return this._Tmo_IdTipoMovimiento;
-			}
-			set
-			{
-				if ((this._Tmo_IdTipoMovimiento != value))
-				{
-					this.OnTmo_IdTipoMovimientoChanging(value);
-					this.SendPropertyChanging();
-					this._Tmo_IdTipoMovimiento = value;
-					this.SendPropertyChanged("Tmo_IdTipoMovimiento");
-					this.OnTmo_IdTipoMovimientoChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Tmo_Nombre", DbType="VarChar(25) NOT NULL", CanBeNull=false)]
-		public string Tmo_Nombre
-		{
-			get
-			{
-				return this._Tmo_Nombre;
-			}
-			set
-			{
-				if ((this._Tmo_Nombre != value))
-				{
-					this.OnTmo_NombreChanging(value);
-					this.SendPropertyChanging();
-					this._Tmo_Nombre = value;
-					this.SendPropertyChanged("Tmo_Nombre");
-					this.OnTmo_NombreChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TbTipoMovimiento_TbMovimiento", Storage="_TbMovimiento", ThisKey="Tmo_IdTipoMovimiento", OtherKey="mo_IdTipo")]
-		public EntitySet<TbMovimiento> TbMovimiento
-		{
-			get
-			{
-				return this._TbMovimiento;
-			}
-			set
-			{
-				this._TbMovimiento.Assign(value);
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_TbMovimiento(TbMovimiento entity)
-		{
-			this.SendPropertyChanging();
-			entity.TbTipoMovimiento = this;
-		}
-		
-		private void detach_TbMovimiento(TbMovimiento entity)
-		{
-			this.SendPropertyChanging();
-			entity.TbTipoMovimiento = null;
-		}
-	}
-	
-	public partial class accederEmpleadoResult
+	public partial class verEmpleadosResult
 	{
 		
 		private string _Identificacion;
@@ -1916,7 +1937,7 @@ namespace OutInDB
 		
 		private string _Telefono_de_Contacto;
 		
-		public accederEmpleadoResult()
+		public verEmpleadosResult()
 		{
 		}
 		
@@ -2049,7 +2070,7 @@ namespace OutInDB
 		}
 	}
 	
-	public partial class verEmpleadosResult
+	public partial class accederEmpleadoResult
 	{
 		
 		private string _Identificacion;
@@ -2068,7 +2089,7 @@ namespace OutInDB
 		
 		private string _Telefono_de_Contacto;
 		
-		public verEmpleadosResult()
+		public accederEmpleadoResult()
 		{
 		}
 		
@@ -2382,12 +2403,138 @@ namespace OutInDB
 	public partial class listarOrdenCompraResult
 	{
 		
+		private int _mo_IdMovimiento;
+		
+		private int _mo_CantiadProducto;
+		
+		private System.DateTime _mo_Fecha;
+		
+		private string _mo_IdEmpleado;
+		
+		private int _mo_IdProducto;
+		
+		private int _mo_IdTipo;
+		
+		private string _mo_Ubicacion;
+		
 		private int _op_IdOrdenPedido;
 		
 		private decimal _op_IdPrecioCompra;
 		
 		public listarOrdenCompraResult()
 		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_mo_IdMovimiento", DbType="Int NOT NULL")]
+		public int mo_IdMovimiento
+		{
+			get
+			{
+				return this._mo_IdMovimiento;
+			}
+			set
+			{
+				if ((this._mo_IdMovimiento != value))
+				{
+					this._mo_IdMovimiento = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_mo_CantiadProducto", DbType="Int NOT NULL")]
+		public int mo_CantiadProducto
+		{
+			get
+			{
+				return this._mo_CantiadProducto;
+			}
+			set
+			{
+				if ((this._mo_CantiadProducto != value))
+				{
+					this._mo_CantiadProducto = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_mo_Fecha", DbType="Date NOT NULL")]
+		public System.DateTime mo_Fecha
+		{
+			get
+			{
+				return this._mo_Fecha;
+			}
+			set
+			{
+				if ((this._mo_Fecha != value))
+				{
+					this._mo_Fecha = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_mo_IdEmpleado", DbType="VarChar(30) NOT NULL", CanBeNull=false)]
+		public string mo_IdEmpleado
+		{
+			get
+			{
+				return this._mo_IdEmpleado;
+			}
+			set
+			{
+				if ((this._mo_IdEmpleado != value))
+				{
+					this._mo_IdEmpleado = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_mo_IdProducto", DbType="Int NOT NULL")]
+		public int mo_IdProducto
+		{
+			get
+			{
+				return this._mo_IdProducto;
+			}
+			set
+			{
+				if ((this._mo_IdProducto != value))
+				{
+					this._mo_IdProducto = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_mo_IdTipo", DbType="Int NOT NULL")]
+		public int mo_IdTipo
+		{
+			get
+			{
+				return this._mo_IdTipo;
+			}
+			set
+			{
+				if ((this._mo_IdTipo != value))
+				{
+					this._mo_IdTipo = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_mo_Ubicacion", DbType="VarChar(10) NOT NULL", CanBeNull=false)]
+		public string mo_Ubicacion
+		{
+			get
+			{
+				return this._mo_Ubicacion;
+			}
+			set
+			{
+				if ((this._mo_Ubicacion != value))
+				{
+					this._mo_Ubicacion = value;
+				}
+			}
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_op_IdOrdenPedido", DbType="Int NOT NULL")]
@@ -2668,6 +2815,68 @@ namespace OutInDB
 				if ((this._pv_Direccion != value))
 				{
 					this._pv_Direccion = value;
+				}
+			}
+		}
+	}
+	
+	public partial class listarventaResult
+	{
+		
+		private int _IdVenta;
+		
+		private System.DateTime _Fecha;
+		
+		private int _CantidadProductos;
+		
+		public listarventaResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IdVenta", DbType="Int NOT NULL")]
+		public int IdVenta
+		{
+			get
+			{
+				return this._IdVenta;
+			}
+			set
+			{
+				if ((this._IdVenta != value))
+				{
+					this._IdVenta = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Fecha", DbType="Date NOT NULL")]
+		public System.DateTime Fecha
+		{
+			get
+			{
+				return this._Fecha;
+			}
+			set
+			{
+				if ((this._Fecha != value))
+				{
+					this._Fecha = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CantidadProductos", DbType="Int NOT NULL")]
+		public int CantidadProductos
+		{
+			get
+			{
+				return this._CantidadProductos;
+			}
+			set
+			{
+				if ((this._CantidadProductos != value))
+				{
+					this._CantidadProductos = value;
 				}
 			}
 		}
