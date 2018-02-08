@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Negocio;
+using OutInDB;
 
 namespace Presentacion.Paginas.Movimientos.Orden_Compra
 {
@@ -35,8 +36,11 @@ namespace Presentacion.Paginas.Movimientos.Orden_Compra
 
             try
             {
+                // Llamar variable de session mencionando que tipo de dato es y guardandolo en una
+                // variable local del mismo tipo y usarla localmente
+                accederEmpleadoResult usu = (accederEmpleadoResult)Session["usuario"];
                 DateTime MiFecha = DateTime.Today;
-                oc.registrarOc(MiFecha, Convert.ToInt32(dl_Productos.SelectedValue), Convert.ToInt32(txt_cant.Text), Session["id"].ToString(), txt_ubicacion.Text, 1, Convert.ToDecimal(txt_precio.Text));
+                oc.registrarOc(MiFecha, Convert.ToInt32(dl_Productos.SelectedValue), Convert.ToInt32(txt_cant.Text), usu.Identificacion, txt_ubicacion.Text, 1, Convert.ToDecimal(txt_precio.Text));
                 lbl_info.Text = "OK";
                 Response.Redirect("VistaOC.aspx");
             }

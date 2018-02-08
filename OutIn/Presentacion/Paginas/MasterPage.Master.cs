@@ -5,22 +5,24 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
+
 namespace Presentacion
 {
     public partial class MasterPage : System.Web.UI.MasterPage
     {
+        
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["usuario"] == null)
             {
-                Response.Redirect("../../Login.aspx");
-                object text1 = object(Session["usuario"];
+                Response.Redirect("../../Login.aspx");                              
             }
         }
 
         protected void Button1_Click(object sender, EventArgs e)
         {
             Session["usuario"] = null;
+            
             Response.Redirect("~/Login.aspx");
         }
 
@@ -44,5 +46,9 @@ namespace Presentacion
             Response.Redirect("~/Paginas/Movimientos/VistaMov.aspx");
         }
 
+        protected void btn_ventas_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Paginas/Movimientos/ventas/Vistaventas.aspx");
+        }
     }
 }

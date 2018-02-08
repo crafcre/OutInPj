@@ -24,15 +24,15 @@ namespace Presentacion
             try
             {
                 Empleado em = new Empleado();
-                if (em.ingresar(txt_usuario.Text,txt_contrasena.Text) != null)
+                if (em.ingresar(txt_usuario.Text, txt_contrasena.Text) != null)
                 {
-                    accederEmpleadoResult usuario = em.ingresar(txt_usuario.Text, txt_contrasena.Text);                    
+                    accederEmpleadoResult usuario = em.ingresar(txt_usuario.Text, txt_contrasena.Text);
+                    
                     Session["usuario"] = usuario;
                     Session["id"] = usuario.Identificacion;
-                   // lbl_info.Text = "Accediste Correctamente " + usuario.Nombre;
-                   // lbl_info.Visible = true;
-                    //lbl_info.Text = Type(Session("usuario"), string);
-                    //Response.Redirect("Paginas/Empleados/Index.aspx");
+                    lbl_info.Text = "Accediste Correctamente " + usuario.Nombre;
+                    lbl_info.Visible = true;                 
+                    Response.Redirect("Paginas/Empleados/Index.aspx");
 
                 }
                 else

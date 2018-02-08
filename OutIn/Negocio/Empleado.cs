@@ -100,5 +100,10 @@ namespace Negocio
             }
 
         }
+
+        public static implicit operator Empleado(accederEmpleadoResult v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
