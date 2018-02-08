@@ -17,8 +17,6 @@
                <asp:Button ID="btn_cat" runat="server" Text="Categoria" OnClick="btn_cat_Click" />
                <asp:Button ID="btn_Productos" runat="server" Text="Productos" OnClick="btn_Productos_Click" />
            
-               <asp:Button ID="btn_ventas" runat="server" Text="Ventas" OnClick="btn_ventas_Click" />
-           
                <asp:Button ID="Button1" runat="server" OnClick="Button1_Click1" Text="Movimientos" />
              <asp:Button ID="btn_Cerrar" runat="server" OnClick="Button1_Click" Text="CerrarSession" />
            

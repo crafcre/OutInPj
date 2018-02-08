@@ -54,7 +54,7 @@ namespace OutInDB
     #endregion
 		
 		public OutInDBDataContext() : 
-				base(global::OutInDB.Properties.Settings.Default.outinDBConnectionString3, mappingSource)
+				base(global::OutInDB.Properties.Settings.Default.outinDBConnectionString4, mappingSource)
 		{
 			OnCreated();
 		}
@@ -155,18 +155,18 @@ namespace OutInDB
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.verEmpleados")]
-		public ISingleResult<verEmpleadosResult> verEmpleados()
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
-			return ((ISingleResult<verEmpleadosResult>)(result.ReturnValue));
-		}
-		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.accederEmpleado")]
 		public ISingleResult<accederEmpleadoResult> accederEmpleado([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(30)")] string usuario, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(50)")] string contrasena)
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), usuario, contrasena);
 			return ((ISingleResult<accederEmpleadoResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.verEmpleados")]
+		public ISingleResult<verEmpleadosResult> verEmpleados()
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
+			return ((ISingleResult<verEmpleadosResult>)(result.ReturnValue));
 		}
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.crearCatgoria")]
@@ -219,9 +219,9 @@ namespace OutInDB
 		}
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.insertarOrdenCompra")]
-		public int insertarOrdenCompra([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Prec", DbType="Money")] System.Nullable<decimal> prec)
+		public int insertarOrdenCompra([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Date")] System.Nullable<System.DateTime> moFecha, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> moProducto, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> moCnat, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(30)")] string moEmp, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(10)")] string moUbi, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> moTipo, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Prec", DbType="Money")] System.Nullable<decimal> prec)
 		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), prec);
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), moFecha, moProducto, moCnat, moEmp, moUbi, moTipo, prec);
 			return ((int)(result.ReturnValue));
 		}
 		
@@ -229,20 +229,6 @@ namespace OutInDB
 		public int InsertarProveedor([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Nombre", DbType="VarChar(70)")] string nombre, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Contacto", DbType="VarChar(50)")] string contacto, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Direccion", DbType="VarChar(50)")] string direccion)
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), nombre, contacto, direccion);
-			return ((int)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.listacambiocliente")]
-		public int listacambiocliente([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> lchequeo, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(50)")] string movimientoinv)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), lchequeo, movimientoinv);
-			return ((int)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.listadevolucion")]
-		public int listadevolucion([global::System.Data.Linq.Mapping.ParameterAttribute(Name="MovimientoInventario", DbType="Int")] System.Nullable<int> movimientoInventario, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(25)")] string tipo)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), movimientoInventario, tipo);
 			return ((int)(result.ReturnValue));
 		}
 		
@@ -286,13 +272,6 @@ namespace OutInDB
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), id, nacimiento, nombre, contrasena, tipo, dir, cargo, telefono);
 			return ((int)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.listarventa")]
-		public ISingleResult<listarventaResult> listarventa()
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
-			return ((ISingleResult<listarventaResult>)(result.ReturnValue));
 		}
 	}
 	
@@ -1918,7 +1897,7 @@ namespace OutInDB
 		}
 	}
 	
-	public partial class verEmpleadosResult
+	public partial class accederEmpleadoResult
 	{
 		
 		private string _Identificacion;
@@ -1937,7 +1916,7 @@ namespace OutInDB
 		
 		private string _Telefono_de_Contacto;
 		
-		public verEmpleadosResult()
+		public accederEmpleadoResult()
 		{
 		}
 		
@@ -2070,7 +2049,7 @@ namespace OutInDB
 		}
 	}
 	
-	public partial class accederEmpleadoResult
+	public partial class verEmpleadosResult
 	{
 		
 		private string _Identificacion;
@@ -2089,7 +2068,7 @@ namespace OutInDB
 		
 		private string _Telefono_de_Contacto;
 		
-		public accederEmpleadoResult()
+		public verEmpleadosResult()
 		{
 		}
 		
@@ -2403,138 +2382,12 @@ namespace OutInDB
 	public partial class listarOrdenCompraResult
 	{
 		
-		private int _mo_IdMovimiento;
-		
-		private int _mo_CantiadProducto;
-		
-		private System.DateTime _mo_Fecha;
-		
-		private string _mo_IdEmpleado;
-		
-		private int _mo_IdProducto;
-		
-		private int _mo_IdTipo;
-		
-		private string _mo_Ubicacion;
-		
 		private int _op_IdOrdenPedido;
 		
 		private decimal _op_IdPrecioCompra;
 		
 		public listarOrdenCompraResult()
 		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_mo_IdMovimiento", DbType="Int NOT NULL")]
-		public int mo_IdMovimiento
-		{
-			get
-			{
-				return this._mo_IdMovimiento;
-			}
-			set
-			{
-				if ((this._mo_IdMovimiento != value))
-				{
-					this._mo_IdMovimiento = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_mo_CantiadProducto", DbType="Int NOT NULL")]
-		public int mo_CantiadProducto
-		{
-			get
-			{
-				return this._mo_CantiadProducto;
-			}
-			set
-			{
-				if ((this._mo_CantiadProducto != value))
-				{
-					this._mo_CantiadProducto = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_mo_Fecha", DbType="Date NOT NULL")]
-		public System.DateTime mo_Fecha
-		{
-			get
-			{
-				return this._mo_Fecha;
-			}
-			set
-			{
-				if ((this._mo_Fecha != value))
-				{
-					this._mo_Fecha = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_mo_IdEmpleado", DbType="VarChar(30) NOT NULL", CanBeNull=false)]
-		public string mo_IdEmpleado
-		{
-			get
-			{
-				return this._mo_IdEmpleado;
-			}
-			set
-			{
-				if ((this._mo_IdEmpleado != value))
-				{
-					this._mo_IdEmpleado = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_mo_IdProducto", DbType="Int NOT NULL")]
-		public int mo_IdProducto
-		{
-			get
-			{
-				return this._mo_IdProducto;
-			}
-			set
-			{
-				if ((this._mo_IdProducto != value))
-				{
-					this._mo_IdProducto = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_mo_IdTipo", DbType="Int NOT NULL")]
-		public int mo_IdTipo
-		{
-			get
-			{
-				return this._mo_IdTipo;
-			}
-			set
-			{
-				if ((this._mo_IdTipo != value))
-				{
-					this._mo_IdTipo = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_mo_Ubicacion", DbType="VarChar(10) NOT NULL", CanBeNull=false)]
-		public string mo_Ubicacion
-		{
-			get
-			{
-				return this._mo_Ubicacion;
-			}
-			set
-			{
-				if ((this._mo_Ubicacion != value))
-				{
-					this._mo_Ubicacion = value;
-				}
-			}
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_op_IdOrdenPedido", DbType="Int NOT NULL")]
@@ -2815,68 +2668,6 @@ namespace OutInDB
 				if ((this._pv_Direccion != value))
 				{
 					this._pv_Direccion = value;
-				}
-			}
-		}
-	}
-	
-	public partial class listarventaResult
-	{
-		
-		private int _IdVenta;
-		
-		private System.DateTime _Fecha;
-		
-		private int _CantidadProductos;
-		
-		public listarventaResult()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IdVenta", DbType="Int NOT NULL")]
-		public int IdVenta
-		{
-			get
-			{
-				return this._IdVenta;
-			}
-			set
-			{
-				if ((this._IdVenta != value))
-				{
-					this._IdVenta = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Fecha", DbType="Date NOT NULL")]
-		public System.DateTime Fecha
-		{
-			get
-			{
-				return this._Fecha;
-			}
-			set
-			{
-				if ((this._Fecha != value))
-				{
-					this._Fecha = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CantidadProductos", DbType="Int NOT NULL")]
-		public int CantidadProductos
-		{
-			get
-			{
-				return this._CantidadProductos;
-			}
-			set
-			{
-				if ((this._CantidadProductos != value))
-				{
-					this._CantidadProductos = value;
 				}
 			}
 		}

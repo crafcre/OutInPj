@@ -7,10 +7,12 @@ using OutInDB;
 
 namespace Negocio
 {
-   public class Ventas:Movimiento
+    public class Ventas : Movimiento
     {
         OutInDBDataContext datos = new OutInDBDataContext();
-        
+    }
+}
+        /*
         public List<listarventaResult> listarventa()
         {
             try
@@ -48,3 +50,4 @@ namespace Negocio
                 return null;
             }
         }*/
+        

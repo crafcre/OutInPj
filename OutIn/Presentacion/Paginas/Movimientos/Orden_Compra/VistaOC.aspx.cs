@@ -36,5 +36,10 @@ namespace Presentacion.Paginas.Movimientos.Orden_Compra
         {
 
         }
+
+        protected void btn_ingresar_click(object sender , EventArgs e)
+        {
+            Response.Redirect("IngresarOC.aspx");
+        }
     }
 }

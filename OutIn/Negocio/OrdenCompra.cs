@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Negocio
 {
-    public class OrdenCompra:Movimiento
+    public class OrdenCompra : Movimiento
     {// controlador de los empleados
         OutInDBDataContext datos = new OutInDBDataContext();
         /*public accederEmpleadoResult ingresar(string usu, string pass)
@@ -100,6 +100,24 @@ namespace Negocio
                 return null;
             }
         }
+
+
+        public bool registrarOc(DateTime moFecha,int moProducto ,int moCnat ,string moEmp,string moUbi ,int moTipo,decimal Prec )
+        {// registrar un empleado a la base de datos
+            try
+            {
+
+                datos.insertarOrdenCompra(moFecha, moProducto, moCnat, moEmp, moUbi, moTipo, Prec);
+                return true;
+
+            }
+            catch (Exception ex)
+            {
+                Rta = ex.Message;
+                return false;
+            }
+        }
+
     }
 }
 

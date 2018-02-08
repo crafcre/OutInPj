@@ -39,5 +39,10 @@ namespace Presentacion.Paginas.Empleados
             }
             
         }
+
+        protected void dr_TipoId_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

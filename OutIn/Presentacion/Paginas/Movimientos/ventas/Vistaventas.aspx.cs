@@ -19,10 +19,10 @@ namespace Presentacion.Paginas.Movimientos.ventas
         {
             Ventas venta = new Ventas();
             try
-            {
+            {/*
                 grvventa.DataSource = venta.listarventa();
                 grvventa.DataBind();
-                lbl_Info.Text = venta.Rta + venta.Codigo;
+                lbl_Info.Text = venta.Rta + venta.Codigo;*/
             }
             catch (Exception)
             {

@@ -5,4 +5,5 @@
     <asp:GridView ID="grv_OrdenCompra" runat="server" OnSelectedIndexChanged="grv_OrdenCompra_SelectedIndexChanged">
 </asp:GridView>
     <asp:Label ID="lbl_Info" runat="server" Text="Label"></asp:Label>
+    <asp:Button ID="btn_ingresar" runat="server" Text="Registrar orden de compra" OnClick="btn_ingresar_click" />
 </asp:Content>

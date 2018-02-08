@@ -39,5 +39,13 @@ namespace Presentacion.Paginas.Movimientos
         {
             Response.Redirect("Orden_Compra/VistaOC.aspx");
         }
+
+        protected void Button2_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Paginas/Movimientos/ventas/Vistaventas.aspx");
+        }
     }
+
+
+    
 }

@@ -44,9 +44,5 @@ namespace Presentacion
             Response.Redirect("~/Paginas/Movimientos/VistaMov.aspx");
         }
 
-        protected void btn_ventas_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("~/Paginas/Movimientos/ventas/Vistaventas.aspx");
-        }
     }
 }

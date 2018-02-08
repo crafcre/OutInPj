@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="outinDB" Class="OutInDBDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=DESKTOP-A1PQ06J;Initial Catalog=outinDB;Integrated Security=True" SettingsObjectName="OutInDB.Properties.Settings" SettingsPropertyName="outinDBConnectionString3" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=DATACENTER2017;Initial Catalog=outinDB;Integrated Security=True" SettingsObjectName="OutInDB.Properties.Settings" SettingsPropertyName="outinDBConnectionString4" Provider="System.Data.SqlClient" />
   <Table Name="dbo.TbCargo" Member="TbCargo">
     <Type Name="TbCargo">
       <Column Name="ca_Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -88,8 +88,10 @@
       <Association Name="TbTipoId_TbEmpleados" Member="TbEmpleados" ThisKey="tid_Id" OtherKey="em_tipoId" Type="TbEmpleados" />
     </Type>
   </Table>
-  <Function Name="dbo.verEmpleados" Method="verEmpleados">
-    <ElementType Name="verEmpleadosResult">
+  <Function Name="dbo.accederEmpleado" Method="accederEmpleado">
+    <Parameter Name="usuario" Type="System.String" DbType="VarChar(30)" />
+    <Parameter Name="contrasena" Type="System.String" DbType="VarChar(50)" />
+    <ElementType Name="accederEmpleadoResult">
       <Column Name="Identificacion" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
       <Column Name="[Fecha Nacimiento]" Member="Fecha_Nacimiento" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
       <Column Name="Nombre" Type="System.String" DbType="VarChar(70) NOT NULL" CanBeNull="false" />
@@ -100,10 +102,8 @@
       <Column Name="[Telefono de Contacto]" Member="Telefono_de_Contacto" Type="System.String" DbType="VarChar(60) NOT NULL" CanBeNull="false" />
     </ElementType>
   </Function>
-  <Function Name="dbo.accederEmpleado" Method="accederEmpleado">
-    <Parameter Name="usuario" Type="System.String" DbType="VarChar(30)" />
-    <Parameter Name="contrasena" Type="System.String" DbType="VarChar(50)" />
-    <ElementType Name="accederEmpleadoResult">
+  <Function Name="dbo.verEmpleados" Method="verEmpleados">
+    <ElementType Name="verEmpleadosResult">
       <Column Name="Identificacion" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
       <Column Name="[Fecha Nacimiento]" Member="Fecha_Nacimiento" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
       <Column Name="Nombre" Type="System.String" DbType="VarChar(70) NOT NULL" CanBeNull="false" />
@@ -156,6 +156,12 @@
     <Return Type="System.Int32" />
   </Function>
   <Function Name="dbo.insertarOrdenCompra" Method="insertarOrdenCompra">
+    <Parameter Name="moFecha" Type="System.DateTime" DbType="Date" />
+    <Parameter Name="moProducto" Type="System.Int32" DbType="Int" />
+    <Parameter Name="moCnat" Type="System.Int32" DbType="Int" />
+    <Parameter Name="moEmp" Type="System.String" DbType="VarChar(30)" />
+    <Parameter Name="moUbi" Type="System.String" DbType="VarChar(10)" />
+    <Parameter Name="moTipo" Type="System.Int32" DbType="Int" />
     <Parameter Name="Prec" Parameter="prec" Type="System.Decimal" DbType="Money" />
     <Return Type="System.Int32" />
   </Function>
@@ -163,16 +169,6 @@
     <Parameter Name="Nombre" Parameter="nombre" Type="System.String" DbType="VarChar(70)" />
     <Parameter Name="Contacto" Parameter="contacto" Type="System.String" DbType="VarChar(50)" />
     <Parameter Name="Direccion" Parameter="direccion" Type="System.String" DbType="VarChar(50)" />
-    <Return Type="System.Int32" />
-  </Function>
-  <Function Name="dbo.listacambiocliente" Method="listacambiocliente">
-    <Parameter Name="lchequeo" Type="System.Int32" DbType="Int" />
-    <Parameter Name="movimientoinv" Type="System.String" DbType="VarChar(50)" />
-    <Return Type="System.Int32" />
-  </Function>
-  <Function Name="dbo.listadevolucion" Method="listadevolucion">
-    <Parameter Name="MovimientoInventario" Parameter="movimientoInventario" Type="System.Int32" DbType="Int" />
-    <Parameter Name="tipo" Type="System.String" DbType="VarChar(25)" />
     <Return Type="System.Int32" />
   </Function>
   <Function Name="dbo.listar_Movimientos" Method="listar_Movimientos">
@@ -194,13 +190,6 @@
   </Function>
   <Function Name="dbo.listarOrdenCompra" Method="listarOrdenCompra">
     <ElementType Name="listarOrdenCompraResult">
-      <Column Name="mo_IdMovimiento" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="mo_CantiadProducto" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="mo_Fecha" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
-      <Column Name="mo_IdEmpleado" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
-      <Column Name="mo_IdProducto" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="mo_IdTipo" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="mo_Ubicacion" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
       <Column Name="op_IdOrdenPedido" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="op_IdPrecioCompra" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
     </ElementType>
@@ -236,12 +225,5 @@
     <Parameter Name="cargo" Type="System.Int32" DbType="Int" />
     <Parameter Name="telefono" Type="System.String" DbType="VarChar(60)" />
     <Return Type="System.Int32" />
-  </Function>
-  <Function Name="dbo.listarventa" Method="listarventa">
-    <ElementType Name="listarventaResult">
-      <Column Name="IdVenta" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Fecha" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
-      <Column Name="CantidadProductos" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-    </ElementType>
   </Function>
 </Database>
