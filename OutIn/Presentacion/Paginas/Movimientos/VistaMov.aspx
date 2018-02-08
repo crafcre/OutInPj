@@ -6,5 +6,5 @@
     </asp:GridView>
     <asp:Label ID="lbl_Info" runat="server" Text="Label"></asp:Label>
     <asp:Button ID="btn_OC" runat="server" Text="Orden Compra" OnClick="btn_OC_Click" />
-    <asp:Button ID="btnventas" runat="server" OnClick="Button2_Click" Text="Ventas" />
+<asp:Button ID="btnventas" runat="server" OnClick="Button2_Click" Text="Ventas" />
 </asp:Content>

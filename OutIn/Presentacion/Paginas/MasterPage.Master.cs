@@ -14,7 +14,7 @@ namespace Presentacion
             if (Session["usuario"] == null)
             {
                 Response.Redirect("../../Login.aspx");
-                
+                object text1 = object(Session["usuario"];
             }
         }
 
