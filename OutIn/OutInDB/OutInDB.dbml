@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="outinDB" Class="OutInDBDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=DATACENTER2017;Initial Catalog=outinDB;Integrated Security=True" SettingsObjectName="OutInDB.Properties.Settings" SettingsPropertyName="outinDBConnectionString4" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=DESKTOP-A1PQ06J;Initial Catalog=outinDB;Integrated Security=True" SettingsObjectName="OutInDB.Properties.Settings" SettingsPropertyName="outinDBConnectionString3" Provider="System.Data.SqlClient" />
   <Table Name="dbo.TbCargo" Member="TbCargo">
     <Type Name="TbCargo">
       <Column Name="ca_Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -225,5 +225,37 @@
     <Parameter Name="cargo" Type="System.Int32" DbType="Int" />
     <Parameter Name="telefono" Type="System.String" DbType="VarChar(60)" />
     <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.insertarventa" Method="insertarventa">
+    <Parameter Name="moFecha" Type="System.DateTime" DbType="Date" />
+    <Parameter Name="moProducto" Type="System.Int32" DbType="Int" />
+    <Parameter Name="moCnat" Type="System.Int32" DbType="Int" />
+    <Parameter Name="moEmp" Type="System.String" DbType="VarChar(30)" />
+    <Parameter Name="moUbi" Type="System.String" DbType="VarChar(10)" />
+    <Parameter Name="moTipo" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Prec" Parameter="prec" Type="System.Decimal" DbType="Money" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.listarventa" Method="listarventa">
+    <ElementType Name="listarventaResult">
+      <Column Name="ve_idventa" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ve_PrecioVenta" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.seleccionarproducto" Method="seleccionarproducto">
+    <Parameter Name="nombre" Type="System.String" DbType="VarChar(50)" />
+    <ElementType Name="seleccionarproductoResult">
+      <Column Name="pd_IdProducto" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="pd_Nombre" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="pd_Precio" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.seleccionarproductoxcod" Method="seleccionarproductoxcod">
+    <Parameter Name="cod" Type="System.Int32" DbType="Int" />
+    <ElementType Name="seleccionarproductoxcodResult">
+      <Column Name="pd_IdProducto" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="pd_Nombre" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="pd_Precio" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+    </ElementType>
   </Function>
 </Database>

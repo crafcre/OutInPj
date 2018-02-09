@@ -10,33 +10,42 @@
 namespace Presentacion.Paginas.Movimientos.ventas {
     
     
-    public partial class WebForm1 {
+    public partial class IngresarVenta {
         
         /// <summary>
-        /// Control grvventa.
+        /// Control txtnomproducto.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView grvventa;
+        protected global::System.Web.UI.WebControls.TextBox txtnomproducto;
         
         /// <summary>
-        /// Control lbl_Info.
+        /// Control btningresar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_Info;
+        protected global::System.Web.UI.WebControls.Button btningresar;
         
         /// <summary>
-        /// Control Button2.
+        /// Control grvproventa.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button2;
+        protected global::System.Web.UI.WebControls.GridView grvproventa;
+        
+        /// <summary>
+        /// Control lblrta.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblrta;
     }
 }

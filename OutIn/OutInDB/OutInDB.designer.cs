@@ -54,7 +54,7 @@ namespace OutInDB
     #endregion
 		
 		public OutInDBDataContext() : 
-				base(global::OutInDB.Properties.Settings.Default.outinDBConnectionString4, mappingSource)
+				base(global::OutInDB.Properties.Settings.Default.outinDBConnectionString3, mappingSource)
 		{
 			OnCreated();
 		}
@@ -272,6 +272,34 @@ namespace OutInDB
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), id, nacimiento, nombre, contrasena, tipo, dir, cargo, telefono);
 			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.insertarventa")]
+		public int insertarventa([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Date")] System.Nullable<System.DateTime> moFecha, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> moProducto, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> moCnat, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(30)")] string moEmp, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(10)")] string moUbi, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> moTipo, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Prec", DbType="Money")] System.Nullable<decimal> prec)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), moFecha, moProducto, moCnat, moEmp, moUbi, moTipo, prec);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.listarventa")]
+		public ISingleResult<listarventaResult> listarventa()
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
+			return ((ISingleResult<listarventaResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.seleccionarproducto")]
+		public ISingleResult<seleccionarproductoResult> seleccionarproducto([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(50)")] string nombre)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), nombre);
+			return ((ISingleResult<seleccionarproductoResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.seleccionarproductoxcod")]
+		public ISingleResult<seleccionarproductoxcodResult> seleccionarproductoxcod([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> cod)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), cod);
+			return ((ISingleResult<seleccionarproductoxcodResult>)(result.ReturnValue));
 		}
 	}
 	
@@ -2668,6 +2696,174 @@ namespace OutInDB
 				if ((this._pv_Direccion != value))
 				{
 					this._pv_Direccion = value;
+				}
+			}
+		}
+	}
+	
+	public partial class listarventaResult
+	{
+		
+		private int _ve_idventa;
+		
+		private decimal _ve_PrecioVenta;
+		
+		public listarventaResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ve_idventa", DbType="Int NOT NULL")]
+		public int ve_idventa
+		{
+			get
+			{
+				return this._ve_idventa;
+			}
+			set
+			{
+				if ((this._ve_idventa != value))
+				{
+					this._ve_idventa = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ve_PrecioVenta", DbType="Money NOT NULL")]
+		public decimal ve_PrecioVenta
+		{
+			get
+			{
+				return this._ve_PrecioVenta;
+			}
+			set
+			{
+				if ((this._ve_PrecioVenta != value))
+				{
+					this._ve_PrecioVenta = value;
+				}
+			}
+		}
+	}
+	
+	public partial class seleccionarproductoResult
+	{
+		
+		private int _pd_IdProducto;
+		
+		private string _pd_Nombre;
+		
+		private decimal _pd_Precio;
+		
+		public seleccionarproductoResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_pd_IdProducto", DbType="Int NOT NULL")]
+		public int pd_IdProducto
+		{
+			get
+			{
+				return this._pd_IdProducto;
+			}
+			set
+			{
+				if ((this._pd_IdProducto != value))
+				{
+					this._pd_IdProducto = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_pd_Nombre", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string pd_Nombre
+		{
+			get
+			{
+				return this._pd_Nombre;
+			}
+			set
+			{
+				if ((this._pd_Nombre != value))
+				{
+					this._pd_Nombre = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_pd_Precio", DbType="Money NOT NULL")]
+		public decimal pd_Precio
+		{
+			get
+			{
+				return this._pd_Precio;
+			}
+			set
+			{
+				if ((this._pd_Precio != value))
+				{
+					this._pd_Precio = value;
+				}
+			}
+		}
+	}
+	
+	public partial class seleccionarproductoxcodResult
+	{
+		
+		private int _pd_IdProducto;
+		
+		private string _pd_Nombre;
+		
+		private decimal _pd_Precio;
+		
+		public seleccionarproductoxcodResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_pd_IdProducto", DbType="Int NOT NULL")]
+		public int pd_IdProducto
+		{
+			get
+			{
+				return this._pd_IdProducto;
+			}
+			set
+			{
+				if ((this._pd_IdProducto != value))
+				{
+					this._pd_IdProducto = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_pd_Nombre", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string pd_Nombre
+		{
+			get
+			{
+				return this._pd_Nombre;
+			}
+			set
+			{
+				if ((this._pd_Nombre != value))
+				{
+					this._pd_Nombre = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_pd_Precio", DbType="Money NOT NULL")]
+		public decimal pd_Precio
+		{
+			get
+			{
+				return this._pd_Precio;
+			}
+			set
+			{
+				if ((this._pd_Precio != value))
+				{
+					this._pd_Precio = value;
 				}
 			}
 		}

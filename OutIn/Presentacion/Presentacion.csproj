@@ -81,6 +81,7 @@
     <Content Include="Paginas\Empleados\Index.aspx" />
     <Content Include="Paginas\Movimientos\Orden_Compra\IngresarOC.aspx" />
     <Content Include="Paginas\Movimientos\Orden_Compra\VistaOC.aspx" />
+    <Content Include="Paginas\Movimientos\ventas\IngresarVenta.aspx" />
     <Content Include="Paginas\Movimientos\ventas\Vistaventas.aspx" />
     <Content Include="Paginas\Movimientos\VistaMov.aspx" />
     <Content Include="Paginas\Productos\form-categoria.aspx" />
@@ -133,6 +134,13 @@
     </Compile>
     <Compile Include="Paginas\Movimientos\Orden_Compra\VistaOC.aspx.designer.cs">
       <DependentUpon>VistaOC.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Paginas\Movimientos\ventas\IngresarVenta.aspx.cs">
+      <DependentUpon>IngresarVenta.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Paginas\Movimientos\ventas\IngresarVenta.aspx.designer.cs">
+      <DependentUpon>IngresarVenta.aspx</DependentUpon>
     </Compile>
     <Compile Include="Paginas\Movimientos\ventas\Vistaventas.aspx.cs">
       <DependentUpon>Vistaventas.aspx</DependentUpon>

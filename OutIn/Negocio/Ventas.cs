@@ -10,9 +10,9 @@ namespace Negocio
     public class Ventas : Movimiento
     {
         OutInDBDataContext datos = new OutInDBDataContext();
-    }
-}
-        /*
+    
+
+        
         public List<listarventaResult> listarventa()
         {
             try
@@ -31,23 +31,41 @@ namespace Negocio
             }
             
 
-        } 
-    }
-}
-/*  public List<listarOrdenCompraResult> listarOrdenCompra()
-        {// mostrar un listado de los empleados
+        }
+        //metodo para consultar el producto y cargarlo para venta
+        public List<seleccionarproductoxcodResult> cargaProducto(int numero)
+        {
             try
             {
-                List<listarOrdenCompraResult> lisOC = datos.listarOrdenCompra().ToList();
+                List<seleccionarproductoxcodResult> pd = datos.seleccionarproductoxcod(numero).ToList();
                 Codigo = "OK";
                 Rta = "Se realizo correctamente";
-                return lisOC;
+                return pd;
+            }
+            catch(Exception ex)
+            {
+                Codigo = "Error";
+                Rta = ex.Message;
+                return null;
+            }
+        }
+        //se sobrecarga el metodo para poder ser buscado por nombre
+        protected List<seleccionarproductoResult> cargaProducto (String nombre)
+        {
+            try
+            {
+                List<seleccionarproductoResult> pd = datos.seleccionarproducto(nombre).ToList();
+                Codigo = "OK";
+                Rta = "Se realizo correctamente";
+                return pd;
             }
             catch (Exception ex)
             {
                 Codigo = "Error";
                 Rta = ex.Message;
                 return null;
+
             }
-        }*/
-        
+        }
+    }
+}

@@ -10,6 +10,7 @@ namespace Presentacion.Paginas.Movimientos.ventas
 {
     public partial class WebForm1 : System.Web.UI.Page
     {
+        Ventas v = new Ventas();
         protected void Page_Load(object sender, EventArgs e)
         {
             listarVenta();
@@ -17,18 +18,28 @@ namespace Presentacion.Paginas.Movimientos.ventas
 
         private void listarVenta()
         {
-            Ventas venta = new Ventas();
+            
             try
-            {/*
-                grvventa.DataSource = venta.listarventa();
+            {
+                grvventa.DataSource = v.listarventa();
                 grvventa.DataBind();
-                lbl_Info.Text = venta.Rta + venta.Codigo;*/
+                lbl_Info.Text = v.Rta + v.Codigo;
             }
             catch (Exception)
             {
 
                 throw;
             }
+        }
+
+        protected void grvventa_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void Button2_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("IngresarVenta.aspx");
         }
     }
 }
