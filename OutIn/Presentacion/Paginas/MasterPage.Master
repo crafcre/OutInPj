@@ -18,6 +18,7 @@
                <asp:Button ID="btn_Productos" runat="server" Text="Productos" OnClick="btn_Productos_Click" />
            
                <asp:Button ID="Button1" runat="server" OnClick="Button1_Click1" Text="Movimientos" />
+               <asp:Button ID="btn_danoDev" runat="server" Text="Devolucion por daño" OnClick="btn_danoDev_Click" />
              <asp:Button ID="btn_Cerrar" runat="server" OnClick="Button1_Click" Text="CerrarSession" />
            
             </header>

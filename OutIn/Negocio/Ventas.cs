@@ -11,7 +11,7 @@ namespace Negocio
     {
         OutInDBDataContext datos = new OutInDBDataContext();
     
-
+        /*
         
         public List<listarventaResult> listarventa()
         {
@@ -66,6 +66,6 @@ namespace Negocio
                 return null;
 
             }
-        }
+        }*/
     }
 }

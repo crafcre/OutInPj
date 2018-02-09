@@ -13,12 +13,12 @@ namespace Presentacion.Paginas.Movimientos.ventas
         Ventas v = new Ventas();
         protected void Page_Load(object sender, EventArgs e)
         {
-            listarVenta();
+            //listarVenta();
         }
 
         private void listarVenta()
         {
-            
+          /*  
             try
             {
                 grvventa.DataSource = v.listarventa();
@@ -30,6 +30,7 @@ namespace Presentacion.Paginas.Movimientos.ventas
 
                 throw;
             }
+            */
         }
 
         protected void grvventa_SelectedIndexChanged(object sender, EventArgs e)
@@ -39,7 +40,7 @@ namespace Presentacion.Paginas.Movimientos.ventas
 
         protected void Button2_Click(object sender, EventArgs e)
         {
-            Response.Redirect("IngresarVenta.aspx");
+            //Response.Redirect("IngresarVenta.aspx");
         }
     }
 }

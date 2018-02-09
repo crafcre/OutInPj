@@ -11,10 +11,10 @@ namespace Presentacion.Paginas.Movimientos.ventas
     public partial class IngresarVenta : System.Web.UI.Page
     {
         Ventas v = new Ventas();
-    
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            grvproventa.DataSource = v.cargaProducto(Convert.ToInt32(txtnomproducto.Text));
+            //grvproventa.DataSource = v.cargaProducto(Convert.ToInt32(txtnomproducto.Text));
         }
 
         protected void txtnomproducto_TextChanged(object sender, EventArgs e)
@@ -24,22 +24,22 @@ namespace Presentacion.Paginas.Movimientos.ventas
 
         protected void btningresar_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void ingresaProducto()
         {
             try
             {
-                
+
 
             }
             catch (Exception ex)
             {
-                lblrta.Text = v.Rta + ex.Message;               
+                lblrta.Text = v.Rta + ex.Message;
             }
-           
-           
+
+
         }
 
         protected void grvproventa_SelectedIndexChanged(object sender, EventArgs e)
@@ -47,6 +47,7 @@ namespace Presentacion.Paginas.Movimientos.ventas
 
         }
     }
+}
 
     /*private void Form_Load(){
 

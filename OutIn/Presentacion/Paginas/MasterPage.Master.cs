@@ -50,5 +50,11 @@ namespace Presentacion
         {
             Response.Redirect("~/Paginas/Movimientos/ventas/Vistaventas.aspx");
         }
+
+        protected void btn_danoDev_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Paginas/Movimientos/Dano_Devolucion/Dano_Devolucion.aspx");
+
+        }
     }
 }

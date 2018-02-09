@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="outinDB" Class="OutInDBDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=DESKTOP-A1PQ06J;Initial Catalog=outinDB;Integrated Security=True" SettingsObjectName="OutInDB.Properties.Settings" SettingsPropertyName="outinDBConnectionString3" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=DESKTOP-2G5FPU9;Initial Catalog=outinDB;Integrated Security=True" SettingsObjectName="OutInDB.Properties.Settings" SettingsPropertyName="outinDBConnectionString5" Provider="System.Data.SqlClient" />
   <Table Name="dbo.TbCargo" Member="TbCargo">
     <Type Name="TbCargo">
       <Column Name="ca_Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -19,6 +19,12 @@
       <Column Name="cat_Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="cat_Descripcion" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Association Name="TbCategoria_TbProducto" Member="TbProducto" ThisKey="cat_Id" OtherKey="pd_IdCategoria" Type="TbProducto" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TbdanoDevolucion" Member="TbdanoDevolucion">
+    <Type Name="TbdanoDevolucion">
+      <Column Name="deviddanoDevolucion" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="devDescripcion" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
   <Table Name="dbo.TbEmpleados" Member="TbEmpleados">
@@ -88,10 +94,8 @@
       <Association Name="TbTipoId_TbEmpleados" Member="TbEmpleados" ThisKey="tid_Id" OtherKey="em_tipoId" Type="TbEmpleados" />
     </Type>
   </Table>
-  <Function Name="dbo.accederEmpleado" Method="accederEmpleado">
-    <Parameter Name="usuario" Type="System.String" DbType="VarChar(30)" />
-    <Parameter Name="contrasena" Type="System.String" DbType="VarChar(50)" />
-    <ElementType Name="accederEmpleadoResult">
+  <Function Name="dbo.verEmpleados" Method="verEmpleados">
+    <ElementType Name="verEmpleadosResult">
       <Column Name="Identificacion" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
       <Column Name="[Fecha Nacimiento]" Member="Fecha_Nacimiento" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
       <Column Name="Nombre" Type="System.String" DbType="VarChar(70) NOT NULL" CanBeNull="false" />
@@ -102,8 +106,10 @@
       <Column Name="[Telefono de Contacto]" Member="Telefono_de_Contacto" Type="System.String" DbType="VarChar(60) NOT NULL" CanBeNull="false" />
     </ElementType>
   </Function>
-  <Function Name="dbo.verEmpleados" Method="verEmpleados">
-    <ElementType Name="verEmpleadosResult">
+  <Function Name="dbo.accederEmpleado" Method="accederEmpleado">
+    <Parameter Name="usuario" Type="System.String" DbType="VarChar(30)" />
+    <Parameter Name="contrasena" Type="System.String" DbType="VarChar(50)" />
+    <ElementType Name="accederEmpleadoResult">
       <Column Name="Identificacion" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
       <Column Name="[Fecha Nacimiento]" Member="Fecha_Nacimiento" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
       <Column Name="Nombre" Type="System.String" DbType="VarChar(70) NOT NULL" CanBeNull="false" />
@@ -153,6 +159,16 @@
     <Parameter Name="Ubicac" Parameter="ubicac" Type="System.String" DbType="VarChar(10)" />
     <Parameter Name="tipo" Type="System.Int32" DbType="Int" />
     <Parameter Name="conec" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.InsertarDdevolucion" Method="InsertarDdevolucion">
+    <Parameter Name="fecha" Type="System.DateTime" DbType="Date" />
+    <Parameter Name="prod" Type="System.Int32" DbType="Int" />
+    <Parameter Name="cantP" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Emple" Parameter="emple" Type="System.String" DbType="VarChar(30)" />
+    <Parameter Name="Ubicac" Parameter="ubicac" Type="System.String" DbType="VarChar(10)" />
+    <Parameter Name="tipo" Type="System.Int32" DbType="Int" />
+    <Parameter Name="descripcion" Type="System.String" DbType="VarChar(250)" />
     <Return Type="System.Int32" />
   </Function>
   <Function Name="dbo.insertarOrdenCompra" Method="insertarOrdenCompra">
@@ -225,37 +241,5 @@
     <Parameter Name="cargo" Type="System.Int32" DbType="Int" />
     <Parameter Name="telefono" Type="System.String" DbType="VarChar(60)" />
     <Return Type="System.Int32" />
-  </Function>
-  <Function Name="dbo.insertarventa" Method="insertarventa">
-    <Parameter Name="moFecha" Type="System.DateTime" DbType="Date" />
-    <Parameter Name="moProducto" Type="System.Int32" DbType="Int" />
-    <Parameter Name="moCnat" Type="System.Int32" DbType="Int" />
-    <Parameter Name="moEmp" Type="System.String" DbType="VarChar(30)" />
-    <Parameter Name="moUbi" Type="System.String" DbType="VarChar(10)" />
-    <Parameter Name="moTipo" Type="System.Int32" DbType="Int" />
-    <Parameter Name="Prec" Parameter="prec" Type="System.Decimal" DbType="Money" />
-    <Return Type="System.Int32" />
-  </Function>
-  <Function Name="dbo.listarventa" Method="listarventa">
-    <ElementType Name="listarventaResult">
-      <Column Name="ve_idventa" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="ve_PrecioVenta" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
-    </ElementType>
-  </Function>
-  <Function Name="dbo.seleccionarproducto" Method="seleccionarproducto">
-    <Parameter Name="nombre" Type="System.String" DbType="VarChar(50)" />
-    <ElementType Name="seleccionarproductoResult">
-      <Column Name="pd_IdProducto" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="pd_Nombre" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="pd_Precio" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
-    </ElementType>
-  </Function>
-  <Function Name="dbo.seleccionarproductoxcod" Method="seleccionarproductoxcod">
-    <Parameter Name="cod" Type="System.Int32" DbType="Int" />
-    <ElementType Name="seleccionarproductoxcodResult">
-      <Column Name="pd_IdProducto" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="pd_Nombre" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="pd_Precio" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
-    </ElementType>
   </Function>
 </Database>
