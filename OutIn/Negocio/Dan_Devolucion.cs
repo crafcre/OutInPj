@@ -15,6 +15,25 @@ namespace Negocio
         {
             db.InsertarDdevolucion(fecha,producto,cantidad,emple,ubic,tipo,text);
         }
+        public List<string> guardar(string producto, string cant)
+        {
+            List<string> li = new List<string>();
+            li.Add(producto);
+            li.Add(cant);
+            return li;
+        }
+        public List<string> guardar( List<string> l , string producto, string cant)
+        {
+            List<string> li = new List<string>();
+            
+            foreach (var item in l)
+            {
+                li.Add(item);
+            }
+            li.Add(producto);
+            li.Add(cant);
+            return li;
+        }
     }
 
 

@@ -11,12 +11,15 @@
     <asp:Label ID="Label1" runat="server" Text="producto"></asp:Label>
     <asp:DropDownList ID="Ddl_productos" runat="server">
     </asp:DropDownList>
-    <br />
-    <asp:Label ID="Label2" runat="server" Text="Descripción"></asp:Label>
-    <asp:TextBox ID="txt_descripcion" runat="server" Height="107px" Width="247px"></asp:TextBox>
-    <br />
     Cantidad
     <asp:TextBox ID="txt_cantidad" runat="server"></asp:TextBox>
+    <asp:Button ID="btn_agregar" runat="server" Text="+" OnClick="btn_agregar_Click" />
+    <br />
+    <asp:GridView ID="grvListProducto" runat="server"></asp:GridView>
+    <br />
+    <asp:Label ID="Label2" runat="server" Text="Descripción"></asp:Label>
+    <asp:TextBox ID="txt_descripcion" runat="server" Height="107px" Width="247px"></asp:TextBox> 
+    
     <br />
     ubicación<asp:TextBox ID="txt_ubicacion" runat="server" ></asp:TextBox>
     <asp:Button ID="btn_ingresar" runat="server" Text="Ingresar" OnClick="btn_ingresar_Click" />

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="outinDB" Class="OutInDBDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=DESKTOP-2G5FPU9;Initial Catalog=outinDB;Integrated Security=True" SettingsObjectName="OutInDB.Properties.Settings" SettingsPropertyName="outinDBConnectionString5" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=DATACENTER2017;Initial Catalog=outinDB;Integrated Security=True" SettingsObjectName="OutInDB.Properties.Settings" SettingsPropertyName="outinDBConnectionString4" Provider="System.Data.SqlClient" />
   <Table Name="dbo.TbCargo" Member="TbCargo">
     <Type Name="TbCargo">
       <Column Name="ca_Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -27,6 +27,16 @@
       <Column Name="devDescripcion" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
+  <Table Name="dbo.TbDetalleMovimiento" Member="TbDetalleMovimiento">
+    <Type Name="TbDetalleMovimiento">
+      <Column Name="dm_IdDetalles" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="dm_IdProducto" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="dm_IdMovimiento" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="dm_Cantidad" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="TbMovimiento_TbDetalleMovimiento" Member="TbMovimiento" ThisKey="dm_IdMovimiento" OtherKey="mo_IdMovimiento" Type="TbMovimiento" IsForeignKey="true" />
+      <Association Name="TbProducto_TbDetalleMovimiento" Member="TbProducto" ThisKey="dm_IdProducto" OtherKey="pd_IdProducto" Type="TbProducto" IsForeignKey="true" />
+    </Type>
+  </Table>
   <Table Name="dbo.TbEmpleados" Member="TbEmpleados">
     <Type Name="TbEmpleados">
       <Column Name="em_identificacion" Type="System.String" DbType="VarChar(30) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -46,15 +56,13 @@
     <Type Name="TbMovimiento">
       <Column Name="mo_IdMovimiento" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="mo_Fecha" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
-      <Column Name="mo_IdProducto" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="mo_CantiadProducto" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="mo_IdEmpleado" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
       <Column Name="mo_Ubicacion" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
       <Column Name="mo_IdTipo" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="mo_Conector" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="TbMovimiento_TbDetalleMovimiento" Member="TbDetalleMovimiento" ThisKey="mo_IdMovimiento" OtherKey="dm_IdMovimiento" Type="TbDetalleMovimiento" />
       <Association Name="TbEmpleados_TbMovimiento" Member="TbEmpleados" ThisKey="mo_IdEmpleado" OtherKey="em_identificacion" Type="TbEmpleados" IsForeignKey="true" />
       <Association Name="TbTipoMovimiento_TbMovimiento" Member="TbTipoMovimiento" ThisKey="mo_IdTipo" OtherKey="Tmo_IdTipoMovimiento" Type="TbTipoMovimiento" IsForeignKey="true" />
-      <Association Name="TbProducto_TbMovimiento" Member="TbProducto" ThisKey="mo_IdProducto" OtherKey="pd_IdProducto" Type="TbProducto" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.TbOrdenCompra" Member="TbOrdenCompra">
@@ -74,7 +82,7 @@
       <Column Name="pd_StockMax" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="pd_CantidadXUnidad" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="pd_IdCategoria" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Association Name="TbProducto_TbMovimiento" Member="TbMovimiento" ThisKey="pd_IdProducto" OtherKey="mo_IdProducto" Type="TbMovimiento" />
+      <Association Name="TbProducto_TbDetalleMovimiento" Member="TbDetalleMovimiento" ThisKey="pd_IdProducto" OtherKey="dm_IdProducto" Type="TbDetalleMovimiento" />
       <Association Name="TbCategoria_TbProducto" Member="TbCategoria" ThisKey="pd_IdCategoria" OtherKey="cat_Id" Type="TbCategoria" IsForeignKey="true" />
     </Type>
   </Table>
@@ -94,8 +102,10 @@
       <Association Name="TbTipoId_TbEmpleados" Member="TbEmpleados" ThisKey="tid_Id" OtherKey="em_tipoId" Type="TbEmpleados" />
     </Type>
   </Table>
-  <Function Name="dbo.verEmpleados" Method="verEmpleados">
-    <ElementType Name="verEmpleadosResult">
+  <Function Name="dbo.accederEmpleado" Method="accederEmpleado">
+    <Parameter Name="usuario" Type="System.String" DbType="VarChar(30)" />
+    <Parameter Name="contrasena" Type="System.String" DbType="VarChar(50)" />
+    <ElementType Name="accederEmpleadoResult">
       <Column Name="Identificacion" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
       <Column Name="[Fecha Nacimiento]" Member="Fecha_Nacimiento" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
       <Column Name="Nombre" Type="System.String" DbType="VarChar(70) NOT NULL" CanBeNull="false" />
@@ -106,10 +116,8 @@
       <Column Name="[Telefono de Contacto]" Member="Telefono_de_Contacto" Type="System.String" DbType="VarChar(60) NOT NULL" CanBeNull="false" />
     </ElementType>
   </Function>
-  <Function Name="dbo.accederEmpleado" Method="accederEmpleado">
-    <Parameter Name="usuario" Type="System.String" DbType="VarChar(30)" />
-    <Parameter Name="contrasena" Type="System.String" DbType="VarChar(50)" />
-    <ElementType Name="accederEmpleadoResult">
+  <Function Name="dbo.verEmpleados" Method="verEmpleados">
+    <ElementType Name="verEmpleadosResult">
       <Column Name="Identificacion" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
       <Column Name="[Fecha Nacimiento]" Member="Fecha_Nacimiento" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
       <Column Name="Nombre" Type="System.String" DbType="VarChar(70) NOT NULL" CanBeNull="false" />
@@ -190,12 +198,11 @@
   <Function Name="dbo.listar_Movimientos" Method="listar_Movimientos">
     <ElementType Name="listar_MovimientosResult">
       <Column Name="mo_Fecha" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
-      <Column Name="mo_IdProducto" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="mo_CantiadProducto" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="mo_IdEmpleado" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="em_nombre" Type="System.String" DbType="VarChar(70) NOT NULL" CanBeNull="false" />
       <Column Name="mo_Ubicacion" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
-      <Column Name="mo_IdTipo" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="mo_Conector" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Tmo_Nombre" Type="System.String" DbType="VarChar(25) NOT NULL" CanBeNull="false" />
+      <Column Name="pd_Nombre" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="dm_Cantidad" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
     </ElementType>
   </Function>
   <Function Name="dbo.listarCatgoria" Method="listarCatgoria">
@@ -241,5 +248,14 @@
     <Parameter Name="cargo" Type="System.Int32" DbType="Int" />
     <Parameter Name="telefono" Type="System.String" DbType="VarChar(60)" />
     <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.seleccionarProducto" Method="seleccionarProducto">
+    <Parameter Name="nombre" Type="System.String" DbType="VarChar(50)" />
+    <ElementType Name="seleccionarProductoResult">
+      <Column Name="pd_IdProducto" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="pd_Nombre" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="pd_Cantidad" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="pd_Precio" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+    </ElementType>
   </Function>
 </Database>

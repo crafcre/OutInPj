@@ -15,7 +15,16 @@ namespace Presentacion
         {
             if (Session["usuario"] == null)
             {
-                Response.Redirect("../../Login.aspx");                              
+                Response.Redirect("~/Login.aspx");
+            }
+            else
+            {
+                //accederEmpleadoResult usu = (accederEmpleadoResult)Session["usuario"];
+
+                if (true)
+                {
+
+                }
             }
         }
 
