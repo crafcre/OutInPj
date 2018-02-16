@@ -14,6 +14,28 @@ namespace Presentacion.Paginas.Movimientos
         protected void Page_Load(object sender, EventArgs e)
         {
             Llenartable();
+            validar();
+        }
+
+
+        private void validar()
+        {
+            switch (Session["usuario"])
+            {
+                case "Almacenista":
+                    btnventas.Visible = false;
+                    btnventas.Enabled = false;
+                    break;
+                case "Administrador":
+                    break;
+                case "Cajero":
+                    btn_OC.Visible = false;
+                    btn_OC.Enabled = false;
+                    break;
+                default:
+                    break;
+            }
+
         }
 
         private void Llenartable()

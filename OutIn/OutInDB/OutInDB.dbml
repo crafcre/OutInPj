@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="outinDB" Class="OutInDBDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=DATACENTER2017;Initial Catalog=outinDB;Integrated Security=True" SettingsObjectName="OutInDB.Properties.Settings" SettingsPropertyName="outinDBConnectionString4" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=DESKTOP-A1PQ06J;Initial Catalog=outinDB;Integrated Security=True" SettingsObjectName="OutInDB.Properties.Settings" SettingsPropertyName="outinDBConnectionString3" Provider="System.Data.SqlClient" />
   <Table Name="dbo.TbCargo" Member="TbCargo">
     <Type Name="TbCargo">
       <Column Name="ca_Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -23,13 +23,13 @@
   </Table>
   <Table Name="dbo.TbdanoDevolucion" Member="TbdanoDevolucion">
     <Type Name="TbdanoDevolucion">
-      <Column Name="deviddanoDevolucion" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="deviddanoDevolucion" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="devDescripcion" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
   <Table Name="dbo.TbDetalleMovimiento" Member="TbDetalleMovimiento">
     <Type Name="TbDetalleMovimiento">
-      <Column Name="dm_IdDetalles" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="dm_IdDetalles" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="dm_IdProducto" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="dm_IdMovimiento" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="dm_Cantidad" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
@@ -67,7 +67,7 @@
   </Table>
   <Table Name="dbo.TbOrdenCompra" Member="TbOrdenCompra">
     <Type Name="TbOrdenCompra">
-      <Column Name="op_IdOrdenPedido" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="op_IdOrdenPedido" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="op_IdPrecioCompra" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
@@ -88,7 +88,7 @@
   </Table>
   <Table Name="dbo.TbProveedor" Member="TbProveedor">
     <Type Name="TbProveedor">
-      <Column Name="pv_IdProveedor" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="pv_IdProveedor" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="pv_Nombre" Type="System.String" DbType="VarChar(70) NOT NULL" CanBeNull="false" />
       <Column Name="pv_Contacto" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="pv_Direccion" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />

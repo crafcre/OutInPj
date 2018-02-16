@@ -40,6 +40,7 @@ namespace Presentacion.Paginas.Movimientos.Dano_Devolucion
             accederEmpleadoResult usu = (accederEmpleadoResult)Session["usuario"];
             DateTime MiFecha = DateTime.Today;
             dad.insertardanodev(MiFecha,Convert.ToInt32(Ddl_productos.SelectedValue),Convert.ToInt32(txt_cantidad.Text),usu.Identificacion,txt_ubicacion.Text,3, txt_descripcion.Text);
+            Session["lista"] = null;
         }
 
         protected void btn_agregar_Click(object sender, EventArgs e)
@@ -47,7 +48,7 @@ namespace Presentacion.Paginas.Movimientos.Dano_Devolucion
             if (Session["lista"] == null)
             {
                 lis = dad.guardar(Ddl_productos.Text, txt_cantidad.Text);
-                llenarTable();                
+                llenarTable();
             }
             else
             {

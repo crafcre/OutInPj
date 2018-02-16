@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OutInDB;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,7 +11,7 @@ namespace Presentacion
 {
     public partial class MasterPage : System.Web.UI.MasterPage
     {
-        
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["usuario"] == null)
@@ -19,11 +20,35 @@ namespace Presentacion
             }
             else
             {
-                //accederEmpleadoResult usu = (accederEmpleadoResult)Session["usuario"];
+                accederEmpleadoResult usu = (accederEmpleadoResult)Session["usuario"];
 
-                if (true)
+                switch (usu.Cargo)
                 {
+                    case "Administrador":
 
+                        break;
+                    case "Almacenista":
+                        btn_cat.Enabled = false;
+                        btn_cat.Visible = false;
+                        btn_pv.Enabled = false;
+                        btn_pv.Visible = false;
+                        btn_Productos.Enabled = false;
+                        btn_Productos.Visible = false;
+                        btn_danoDev.Enabled = false;
+                        btn_danoDev.Visible = false;
+                        break;
+                    case "Cajero":
+                        btn_cat.Enabled = false;
+                        btn_cat.Visible = false;
+                        btn_pv.Enabled = false;
+                        btn_pv.Visible = true;
+                        btn_Productos.Enabled = false;
+                        btn_Productos.Visible = false;
+                        btn_danoDev.Enabled = false;
+                        btn_danoDev.Visible = false;
+                        break;
+                    default:
+                        break;
                 }
             }
         }

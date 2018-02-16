@@ -22,5 +22,4 @@
     
     <br />
     ubicación<asp:TextBox ID="txt_ubicacion" runat="server" ></asp:TextBox>
-    <asp:Button ID="btn_ingresar" runat="server" Text="Ingresar" OnClick="btn_ingresar_Click" />
-</asp:Content>
+    </asp:Content>
