@@ -2,7 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <asp:GridView ID="gv_proveedores" runat="server" AutoGenerateColumns="False" BackColor="LightGoldenrodYellow" BorderColor="Tan" BorderWidth="1px" CellPadding="2" ForeColor="Black" GridLines="None" OnRowCommand="gv_proveedores_RowCommand" OnSelectedIndexChanged="gv_proveedores_SelectedIndexChanged">
+    <asp:GridView ID="gv_proveedores" runat="server" AutoGenerateColumns="False" BackColor="LightGoldenrodYellow" BorderColor="Tan" BorderWidth="1px" CellPadding="2" ForeColor="Black" GridLines="None" OnRowCommand="gv_proveedores_RowCommand" OnSelectedIndexChanged="gv_proveedores_SelectedIndexChanged" CssClass="list1">
         <AlternatingRowStyle BackColor="PaleGoldenrod" />
         <Columns>
             <asp:BoundField DataField="pv_IdProveedor" HeaderText="Id" />
@@ -12,7 +12,9 @@
             <asp:ButtonField ButtonType="Button" CommandName="Eliminar" HeaderText="Eliminar" Text="Eliminar" />
         </Columns>
         <FooterStyle BackColor="Tan" />
-        <HeaderStyle BackColor="Tan" Font-Bold="True" />
+
+
+        <HeaderStyle BackColor="Tan" Font-Bold="True" CssClass="encabezado" />
         <PagerStyle BackColor="PaleGoldenrod" ForeColor="DarkSlateBlue" HorizontalAlign="Center" />
         <SelectedRowStyle BackColor="DarkSlateBlue" ForeColor="GhostWhite" />
         <SortedAscendingCellStyle BackColor="#FAFAE7" />
@@ -22,4 +24,9 @@
     </asp:GridView>
     <asp:Label ID="lbl_info" runat="server" Text="Label"></asp:Label>
     <asp:Button ID="btn_nuevo_proveedor" runat="server" Text="Nuevo Proveedor" OnClick="btn_nuevo_proveedor_Click" />
+
+
+    <style>
+        
+    </style>
 </asp:Content>

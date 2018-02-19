@@ -4,13 +4,15 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
+
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link href="css/iniciar.css" rel="stylesheet" />
     <title></title>
 </head>
 <body>
     <form id="form1" runat="server">
         <div>
-            <asp:Label ID="lbl_Presentacion" runat="server" Text="OUTIN"></asp:Label>
+            <img src="imagenes/logo.png" />
             <br />
             <asp:Label ID="lbl_usuario" runat="server" Text="Usuario"></asp:Label>
             &nbsp;<asp:TextBox ID="txt_usuario" runat="server"></asp:TextBox>

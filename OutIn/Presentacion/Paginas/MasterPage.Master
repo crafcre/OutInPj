@@ -9,24 +9,35 @@
     <title>Outin</title>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
+    <link href="..//css/header.css" rel="stylesheet" />
+        <link href="..//css/main.css" rel="stylesheet" />
+
 </head>
 <body>
     <form id="form1" runat="server">
         <div>
            <header>
-               <asp:Button ID="btn_pv" runat="server" Text="Proveedores" OnClick="btn_pv_Click" />
-               <asp:Button ID="btn_cat" runat="server" Text="Categoria" OnClick="btn_cat_Click" />
-               <asp:Button ID="btn_Productos" runat="server" Text="Productos" OnClick="btn_Productos_Click" />
+               <div class="wrapper">
+               <img src="../..//imagenes/logo.png"  id="logo"/>
+               <asp:Button ID="btn_pv" runat="server" Text="Proveedores" OnClick="btn_pv_Click" CssClass="Btn" />
+               <asp:Button ID="btn_cat" runat="server" Text="Categoria" OnClick="btn_cat_Click"  CssClass="Btn"/>
+               <asp:Button ID="btn_Productos" runat="server" Text="Productos" OnClick="btn_Productos_Click" CssClass="Btn"/>
            
-               <asp:Button ID="Button1" runat="server" OnClick="Button1_Click1" Text="Movimientos" />
-               <asp:Button ID="btn_danoDev" runat="server" Text="Devolucion por daño" OnClick="btn_danoDev_Click" />
-             <asp:Button ID="btn_Cerrar" runat="server" OnClick="Button1_Click" Text="CerrarSession" />
-           
+               <asp:Button ID="Button1" runat="server" OnClick="Button1_Click1" Text="Movimientos"  CssClass="Btn"/>
+               <asp:Button ID="btn_danoDev" runat="server" Text="Devolucion por daño" OnClick="btn_danoDev_Click" CssClass="Btn" />
+             <asp:Button ID="btn_Cerrar" runat="server" OnClick="Button1_Click" Text="CerrarSession" CssClass="Btn"/>
+              </div>
             </header>
             
-            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">               
-            </asp:ContentPlaceHolder>
 
+
+
+
+            <div class="main">
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server" >     
+
+            </asp:ContentPlaceHolder>
+                </div>
             <footer>
 
             </footer>

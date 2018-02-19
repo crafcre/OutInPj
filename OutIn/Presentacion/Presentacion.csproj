@@ -66,7 +66,10 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="js\agregar-form.js" />
+    <Content Include="css\header.css" />
+    <Content Include="css\iniciar.css" />
+    <Content Include="css\main.css" />
+    <Content Include="imagenes\logo.png" />
     <Content Include="Paginas\Empleados\ingEmpleado.aspx" />
     <Content Include="Paginas\MasterPage.Master" />
     <None Include="packages.config" />

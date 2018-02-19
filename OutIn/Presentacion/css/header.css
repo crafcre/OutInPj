@@ -1,0 +1,68 @@
+﻿/*header encabezado de la pagina*/
+* {
+    margin: 0;
+    padding:0;
+}
+
+body {
+
+}
+
+header {
+    width: 100%; 
+    overflow: hidden; 
+    background: #252932;
+    margin-bottom: 20px;
+    position: fixed;
+}
+
+    img{
+        width: 170px;
+        color: #f2f2f2;
+        font-size: 50px;
+        line-height: 200px;
+        float: left;
+        padding:10px;
+    }
+
+.boton {
+    display: inline-block;
+    color: #6A666A;
+    text-decoration: none;
+    padding: 10px 20px;
+    line-height: normal;
+    font-size: 20px;
+    font-weight: bold;
+    -webkit-transition: all 500ms ease;
+    -o-transition: all 500ms ease;
+    transition: all 500ms ease;
+}
+
+.main{
+     padding-top:130px;
+}
+
+.wrapper {
+    width: 90%; /* Establecemos que el ancho sera del 90% */
+    max-width: 1000px; /* Aqui le decimos que el ancho mÃ¡ximo sera de 1000px */
+    margin: auto; /* Centramos los elementos */
+    overflow: hidden; /* Eliminamos errores de float */
+}
+
+.Btn {
+    background: #252932;
+    color: white;
+    border: none;
+    padding: 15px ;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    margin-top:10px;
+    transition:0.5s;
+}
+
+    .Btn:hover {
+        background: #69B030;
+    }

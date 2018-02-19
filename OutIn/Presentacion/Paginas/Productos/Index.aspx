@@ -4,8 +4,12 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:GridView ID="gr_Producto" runat="server" AutoGenerateColumns="False" OnSelectedIndexChanged="gr_Producto_SelectedIndexChanged" OnRowCommand="grProducto_RowCommand">
         <Columns>
-            <asp:BoundField DataField="pd_IdProducto" HeaderText="Id" />
-            <asp:BoundField DataField="pd_Nombre" HeaderText="Nombre" />
+            <asp:BoundField DataField="pd_IdProducto" HeaderText="Id" >
+            <HeaderStyle CssClass="header" />
+            </asp:BoundField>
+            <asp:BoundField DataField="pd_Nombre" HeaderText="Nombre" >
+            <HeaderStyle CssClass="header" />
+            </asp:BoundField>
             <asp:BoundField DataField="pd_Cantidad" HeaderText="Cantidad" />
             <asp:BoundField DataField="pd_Precio" HeaderText="Precio" />
             <asp:BoundField DataField="pd_Unidades" HeaderText="Existencias" />
