@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Negocio;
+using OutInDB;
 
 namespace Presentacion.Paginas.Movimientos
 {
@@ -20,7 +21,8 @@ namespace Presentacion.Paginas.Movimientos
 
         private void validar()
         {
-            switch (Session["usuario"])
+            accederEmpleadoResult ac = (accederEmpleadoResult)Session["usuario"]; 
+            switch (ac.Cargo)
             {
                 case "Almacenista":
                     btnventas.Visible = false;
