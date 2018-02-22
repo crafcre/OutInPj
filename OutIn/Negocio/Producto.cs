@@ -12,7 +12,21 @@ namespace Negocio
         OutInDBDataContext datos = new OutInDBDataContext();
 
         // ------------------------------------------------------
-
+        public bool sumarProducto(int id, int cant)
+        {
+            try
+            {
+                datos.sumarProducto(id, cant);
+                return true;
+            }
+            catch (Exception EX)
+            {
+                Codigo = "Error";
+                Rta = EX.Message;
+                return false;
+            }
+            
+        }
 
         public List<listarProductosResult> listarProductos()
         {// mostrar un listado de las categorias

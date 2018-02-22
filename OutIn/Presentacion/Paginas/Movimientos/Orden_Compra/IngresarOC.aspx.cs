@@ -43,8 +43,18 @@ namespace Presentacion.Paginas.Movimientos.Orden_Compra
                 accederEmpleadoResult usu = (accederEmpleadoResult)Session["usuario"];
                 DateTime MiFecha = DateTime.Today;
                 //Se llama el metodo registrar orden de compra y se le pasan los datos llenos
-                oc.registrarOc(MiFecha, Convert.ToInt32(dl_Productos.SelectedValue), Convert.ToInt32(txt_cant.Text), usu.Identificacion, txt_ubicacion.Text, 1, Convert.ToDecimal(txt_precio.Text));
-                lbl_info.Text = "OK";
+                if (oc.registrarOc(MiFecha, Convert.ToInt32(dl_Productos.SelectedValue), Convert.ToInt32(txt_cant.Text), usu.Identificacion, txt_ubicacion.Text, 1, Convert.ToDecimal(txt_precio.Text)))
+                {
+                    
+                    pr.sumarProducto(Convert.ToInt32(dl_Productos.SelectedValue), Convert.ToInt32(txt_cant.Text));
+                    lbl_info.Text = "OK";
+                }
+                else
+                {
+                    lbl_info.Text = "Fallo";
+                }
+                
+                
                 //Se devuelve a la lista de orden de compra
                 Response.Redirect("VistaOC.aspx");
             }
