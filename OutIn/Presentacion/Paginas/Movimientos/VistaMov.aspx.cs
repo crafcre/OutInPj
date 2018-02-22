@@ -21,6 +21,7 @@ namespace Presentacion.Paginas.Movimientos
 
         private void validar()
         {
+            // Se valida los botones que se pueden usar por el cargo que se tiene
             accederEmpleadoResult ac = (accederEmpleadoResult)Session["usuario"]; 
             switch (ac.Cargo)
             {
@@ -44,6 +45,8 @@ namespace Presentacion.Paginas.Movimientos
         {
             try
             {
+                // En este metodo se llenara el grid view, con los datos de los movimientos
+                //Se llama al metodo listar movimientos y se guardan como el recurso de datos del grid view
                 grv_Movimientos.DataSource = mov.listarMovimiento();
                 grv_Movimientos.DataBind();
                 lbl_Info.Text = mov.Codigo + mov.Rta;

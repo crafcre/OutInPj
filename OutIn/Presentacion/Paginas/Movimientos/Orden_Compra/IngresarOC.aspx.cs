@@ -19,6 +19,7 @@ namespace Presentacion.Paginas.Movimientos.Orden_Compra
         {
             if (!IsPostBack)
             {
+                // se llena el drop down list con los productos disponibles
                 dl_Productos.DataSource = pr.listarProductos();
                 dl_Productos.DataTextField = "pd_nombre";
                 dl_Productos.DataValueField = "pd_IdProducto";
@@ -41,8 +42,10 @@ namespace Presentacion.Paginas.Movimientos.Orden_Compra
                 // variable local del mismo tipo y usarla localmente
                 accederEmpleadoResult usu = (accederEmpleadoResult)Session["usuario"];
                 DateTime MiFecha = DateTime.Today;
+                //Se llama el metodo registrar orden de compra y se le pasan los datos llenos
                 oc.registrarOc(MiFecha, Convert.ToInt32(dl_Productos.SelectedValue), Convert.ToInt32(txt_cant.Text), usu.Identificacion, txt_ubicacion.Text, 1, Convert.ToDecimal(txt_precio.Text));
                 lbl_info.Text = "OK";
+                //Se devuelve a la lista de orden de compra
                 Response.Redirect("VistaOC.aspx");
             }
             catch (Exception ex)

@@ -15,6 +15,7 @@ namespace Presentacion.Paginas.Empleados
         {
             if (dr_Cargo.Text == "")
             {
+                //Se llenan los drop down list con los datos de cargo y tipo de documento
                 dr_TipoId.Items.Add("C.C.");
                 dr_TipoId.Items.Add("C.E.");
                 dr_Cargo.Items.Add("Administrador");
@@ -28,8 +29,10 @@ namespace Presentacion.Paginas.Empleados
         {
             try
             {
+                //Se llama el metodo registrar empleado y se le pasan los datos llenos
                 emp.registraEmpleado(txt_Id.Text, fec_Nacimiento.SelectedDate, txt_Nombre.Text, txt_contrasena.Text, dr_TipoId.Text, txt_Direccion.Text, dr_Cargo.Text, txt_telefono.Text);
                 lbl_info.Text = "OK";
+                //Se redirige a el index del empleado
                 Response.Redirect("Index.aspx");
             }
             catch (Exception ex)

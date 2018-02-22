@@ -19,6 +19,9 @@ namespace Presentacion.Paginas.Productos
         {
             try
             {
+                //Metodo de listar productos
+                // En este metodo se llenara el grid view, con los datos de los productos
+                //Se llama al metodo listar productos y se guardan como el recurso de datos del grid view
                 gr_Producto.DataSource = pr.listarProductos();
                 gr_Producto.DataBind();
                 lbl_info.Text = pr.Codigo + pr.Rta;
@@ -31,6 +34,7 @@ namespace Presentacion.Paginas.Productos
 
         protected void btn_nuevoProducto_Click(object sender, EventArgs e)
         {
+            //Boton para registrar nuevo producto
             Response.Redirect("from-Producto.aspx");
         }
 
@@ -44,7 +48,8 @@ namespace Presentacion.Paginas.Productos
             {
                 try
                 {
-
+                    //Boton de eliminar un proucto
+                    // Se busca el id del producto a eliminar por cual boton fue el que se oprimio
                     int id = Convert.ToInt32(gr_Producto.Rows[Convert.ToInt32(e.CommandArgument)].Cells[0].Text);
                     if (pr.EliminarProducto(id))
                     {

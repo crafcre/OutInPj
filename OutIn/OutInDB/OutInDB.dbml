@@ -1,17 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="outinDB" Class="OutInDBDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=DATACENTER2017;Initial Catalog=outinDB;Integrated Security=True" SettingsObjectName="OutInDB.Properties.Settings" SettingsPropertyName="outinDBConnectionString4" Provider="System.Data.SqlClient" />
-  <Table Name="dbo.TbCargo" Member="TbCargo">
-    <Type Name="TbCargo">
-      <Column Name="ca_Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="ca_Descripcion" Type="System.String" DbType="VarChar(40) NOT NULL" CanBeNull="false" />
-      <Association Name="TbCargo_TbEmpleados" Member="TbEmpleados" ThisKey="ca_Id" OtherKey="em_cargo" Type="TbEmpleados" />
-    </Type>
-  </Table>
+  <Connection Mode="AppSettings" ConnectionString="Data Source=DESKTOP-2G5FPU9;Initial Catalog=outinDB;Integrated Security=True" SettingsObjectName="OutInDB.Properties.Settings" SettingsPropertyName="outinDBConnectionString5" Provider="System.Data.SqlClient" />
   <Table Name="dbo.TbTipoMovimiento" Member="TbTipoMovimiento">
     <Type Name="TbTipoMovimiento">
       <Column Name="Tmo_IdTipoMovimiento" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="Tmo_Nombre" Type="System.String" DbType="VarChar(25) NOT NULL" CanBeNull="false" />
       <Association Name="TbTipoMovimiento_TbMovimiento" Member="TbMovimiento" ThisKey="Tmo_IdTipoMovimiento" OtherKey="mo_IdTipo" Type="TbMovimiento" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TbCargo" Member="TbCargo">
+    <Type Name="TbCargo">
+      <Column Name="ca_Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ca_Descripcion" Type="System.String" DbType="VarChar(40) NOT NULL" CanBeNull="false" />
+      <Association Name="TbCargo_TbEmpleados" Member="TbEmpleados" ThisKey="ca_Id" OtherKey="em_cargo" Type="TbEmpleados" />
     </Type>
   </Table>
   <Table Name="dbo.TbCategoria" Member="TbCategoria">

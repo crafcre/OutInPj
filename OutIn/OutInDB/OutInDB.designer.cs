@@ -30,12 +30,12 @@ namespace OutInDB
 		
     #region Definiciones de métodos de extensibilidad
     partial void OnCreated();
-    partial void InsertTbCargo(TbCargo instance);
-    partial void UpdateTbCargo(TbCargo instance);
-    partial void DeleteTbCargo(TbCargo instance);
     partial void InsertTbTipoMovimiento(TbTipoMovimiento instance);
     partial void UpdateTbTipoMovimiento(TbTipoMovimiento instance);
     partial void DeleteTbTipoMovimiento(TbTipoMovimiento instance);
+    partial void InsertTbCargo(TbCargo instance);
+    partial void UpdateTbCargo(TbCargo instance);
+    partial void DeleteTbCargo(TbCargo instance);
     partial void InsertTbCategoria(TbCategoria instance);
     partial void UpdateTbCategoria(TbCategoria instance);
     partial void DeleteTbCategoria(TbCategoria instance);
@@ -54,7 +54,7 @@ namespace OutInDB
     #endregion
 		
 		public OutInDBDataContext() : 
-				base(global::OutInDB.Properties.Settings.Default.outinDBConnectionString4, mappingSource)
+				base(global::OutInDB.Properties.Settings.Default.outinDBConnectionString5, mappingSource)
 		{
 			OnCreated();
 		}
@@ -83,19 +83,19 @@ namespace OutInDB
 			OnCreated();
 		}
 		
-		public System.Data.Linq.Table<TbCargo> TbCargo
-		{
-			get
-			{
-				return this.GetTable<TbCargo>();
-			}
-		}
-		
 		public System.Data.Linq.Table<TbTipoMovimiento> TbTipoMovimiento
 		{
 			get
 			{
 				return this.GetTable<TbTipoMovimiento>();
+			}
+		}
+		
+		public System.Data.Linq.Table<TbCargo> TbCargo
+		{
+			get
+			{
+				return this.GetTable<TbCargo>();
 			}
 		}
 		
@@ -305,120 +305,6 @@ namespace OutInDB
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TbCargo")]
-	public partial class TbCargo : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _ca_Id;
-		
-		private string _ca_Descripcion;
-		
-		private EntitySet<TbEmpleados> _TbEmpleados;
-		
-    #region Definiciones de métodos de extensibilidad
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void Onca_IdChanging(int value);
-    partial void Onca_IdChanged();
-    partial void Onca_DescripcionChanging(string value);
-    partial void Onca_DescripcionChanged();
-    #endregion
-		
-		public TbCargo()
-		{
-			this._TbEmpleados = new EntitySet<TbEmpleados>(new Action<TbEmpleados>(this.attach_TbEmpleados), new Action<TbEmpleados>(this.detach_TbEmpleados));
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ca_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int ca_Id
-		{
-			get
-			{
-				return this._ca_Id;
-			}
-			set
-			{
-				if ((this._ca_Id != value))
-				{
-					this.Onca_IdChanging(value);
-					this.SendPropertyChanging();
-					this._ca_Id = value;
-					this.SendPropertyChanged("ca_Id");
-					this.Onca_IdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ca_Descripcion", DbType="VarChar(40) NOT NULL", CanBeNull=false)]
-		public string ca_Descripcion
-		{
-			get
-			{
-				return this._ca_Descripcion;
-			}
-			set
-			{
-				if ((this._ca_Descripcion != value))
-				{
-					this.Onca_DescripcionChanging(value);
-					this.SendPropertyChanging();
-					this._ca_Descripcion = value;
-					this.SendPropertyChanged("ca_Descripcion");
-					this.Onca_DescripcionChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TbCargo_TbEmpleados", Storage="_TbEmpleados", ThisKey="ca_Id", OtherKey="em_cargo")]
-		public EntitySet<TbEmpleados> TbEmpleados
-		{
-			get
-			{
-				return this._TbEmpleados;
-			}
-			set
-			{
-				this._TbEmpleados.Assign(value);
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_TbEmpleados(TbEmpleados entity)
-		{
-			this.SendPropertyChanging();
-			entity.TbCargo = this;
-		}
-		
-		private void detach_TbEmpleados(TbEmpleados entity)
-		{
-			this.SendPropertyChanging();
-			entity.TbCargo = null;
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TbTipoMovimiento")]
 	public partial class TbTipoMovimiento : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -530,6 +416,120 @@ namespace OutInDB
 		{
 			this.SendPropertyChanging();
 			entity.TbTipoMovimiento = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TbCargo")]
+	public partial class TbCargo : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ca_Id;
+		
+		private string _ca_Descripcion;
+		
+		private EntitySet<TbEmpleados> _TbEmpleados;
+		
+    #region Definiciones de métodos de extensibilidad
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void Onca_IdChanging(int value);
+    partial void Onca_IdChanged();
+    partial void Onca_DescripcionChanging(string value);
+    partial void Onca_DescripcionChanged();
+    #endregion
+		
+		public TbCargo()
+		{
+			this._TbEmpleados = new EntitySet<TbEmpleados>(new Action<TbEmpleados>(this.attach_TbEmpleados), new Action<TbEmpleados>(this.detach_TbEmpleados));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ca_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int ca_Id
+		{
+			get
+			{
+				return this._ca_Id;
+			}
+			set
+			{
+				if ((this._ca_Id != value))
+				{
+					this.Onca_IdChanging(value);
+					this.SendPropertyChanging();
+					this._ca_Id = value;
+					this.SendPropertyChanged("ca_Id");
+					this.Onca_IdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ca_Descripcion", DbType="VarChar(40) NOT NULL", CanBeNull=false)]
+		public string ca_Descripcion
+		{
+			get
+			{
+				return this._ca_Descripcion;
+			}
+			set
+			{
+				if ((this._ca_Descripcion != value))
+				{
+					this.Onca_DescripcionChanging(value);
+					this.SendPropertyChanging();
+					this._ca_Descripcion = value;
+					this.SendPropertyChanged("ca_Descripcion");
+					this.Onca_DescripcionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TbCargo_TbEmpleados", Storage="_TbEmpleados", ThisKey="ca_Id", OtherKey="em_cargo")]
+		public EntitySet<TbEmpleados> TbEmpleados
+		{
+			get
+			{
+				return this._TbEmpleados;
+			}
+			set
+			{
+				this._TbEmpleados.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_TbEmpleados(TbEmpleados entity)
+		{
+			this.SendPropertyChanging();
+			entity.TbCargo = this;
+		}
+		
+		private void detach_TbEmpleados(TbEmpleados entity)
+		{
+			this.SendPropertyChanging();
+			entity.TbCargo = null;
 		}
 	}
 	

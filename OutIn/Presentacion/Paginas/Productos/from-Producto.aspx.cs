@@ -16,6 +16,8 @@ namespace Presentacion.Paginas.Productos
         {
             if (!IsPostBack)
             {
+                //Carga del select de categoria
+                //Se llama al metodo de listar categoria
                 drl_Categoria.DataSource = cat.listarCategorias();
                 drl_Categoria.DataTextField = "cat_Descripcion";
                 drl_Categoria.DataValueField = "cat_Id";
@@ -27,8 +29,10 @@ namespace Presentacion.Paginas.Productos
         {
             try
             {
+                //Se llama el metodo registrar producto y se le pasan los datos llenos
                 pr.registraProducto(txt_Nombre.Text, Convert.ToInt32(txt_Cant.Text), Convert.ToDecimal(txt_Precio.Text), Convert.ToInt32(txt_Unidades.Text), Convert.ToInt32(txt_sMin.Text), Convert.ToInt32(txt_sMax.Text), txt_canXunidad.Text,Convert.ToInt32( drl_Categoria.SelectedValue));
                 lbl_Info.Text = "OK";
+                //Se devuelve a la lista de productos
                 Response.Redirect("Index.aspx");
             }
             catch (Exception ex)

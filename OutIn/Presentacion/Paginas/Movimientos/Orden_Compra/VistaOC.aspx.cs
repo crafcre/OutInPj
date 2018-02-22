@@ -20,6 +20,8 @@ namespace Presentacion.Paginas.Movimientos.Orden_Compra
         {
             try
             {
+                // En este metodo se llenara el grid view, con los datos de las ordenes de pedido
+                //Se llama al metodo listar ordenes de pedido y se guardan como el recurso de datos del grid view
                 grv_OrdenCompra.DataSource = oc.listarOrdenCompra();
                 grv_OrdenCompra.DataBind();
                 lbl_Info.Text = oc.Rta + oc.Codigo;

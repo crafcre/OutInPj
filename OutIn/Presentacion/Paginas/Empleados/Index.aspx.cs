@@ -19,6 +19,8 @@ namespace Presentacion.Paginas
         {
             try
             {
+                // En este metodo se llenara el grid view, con los datos de los empleados
+                //Se llama al metodo listar empleados y se guardan como el recurso de datos del grid view
                 gv_Empleados.DataSource = emp.listarEmpleado();
                 gv_Empleados.DataBind();
                 lbl_info.Text = emp.Codigo + emp.Rta;
@@ -49,8 +51,11 @@ namespace Presentacion.Paginas
             {
                 try
                 {
-                    
+                    //Boton de eliminar un empleado
+                    // Se busca el id del empleado a eliminar por cual boton fue el que se oprimio
                     string id = gv_Empleados.Rows[Convert.ToInt32(e.CommandArgument)].Cells[0].Text;
+                    //Se llama al metodo de eliminar empleado pasandole el id
+                    //Si se borra correctamente el metodo devolvera true 
                     if (emp.EliminarEmpleado(id))
                     {
                         lbl_info.Text = emp.Codigo + " - " + emp.Rta;

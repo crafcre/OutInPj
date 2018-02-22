@@ -19,6 +19,8 @@ namespace Presentacion.Paginas.Productos
         {
             try
             {
+                // En este metodo se llenara el grid view, con los datos de las categorias
+                //Se llama al metodo listar categorias y se guardan como el recurso de datos del grid view
                 gr_cat.DataSource = cat.listarCategorias();
                 gr_cat.DataBind();
                 lbl_info.Text = cat.Codigo + cat.Rta;
@@ -31,6 +33,7 @@ namespace Presentacion.Paginas.Productos
 
         protected void btn_catNueva_Click(object sender, EventArgs e)
         {
+            //boton de ingresar producto nuevo
             Response.Redirect("form-categoria.aspx");
         }
 
@@ -45,7 +48,8 @@ namespace Presentacion.Paginas.Productos
             {
                 try
                 {
-
+                    //Boton de eliminar un categoria
+                    // Se busca el id del categoria a eliminar por cual boton fue el que se oprimio
                     int id = Convert.ToInt32(gr_cat.Rows[Convert.ToInt32(e.CommandArgument)].Cells[0].Text);
                     if (cat.EliminarCategoria(id))
                     {

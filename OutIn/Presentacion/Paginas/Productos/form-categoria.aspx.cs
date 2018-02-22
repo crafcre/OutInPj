@@ -20,8 +20,10 @@ namespace Presentacion.Paginas.Productos
         {
             try
             {
+                //Se llama el metodo registrar categoria y se le pasan los datos llenos
                 cat.registraCategoria(txt_nombre.Text);
                 lbl_Info.Text = cat.Codigo + cat.Rta;
+                //Se devuelve a la lista de categoria
                 Response.Redirect("index-cat.aspx");
             }
             catch (Exception ex)

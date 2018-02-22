@@ -21,6 +21,8 @@ namespace Presentacion.Paginas.Proveedores
         {
             try
             {
+                // En este metodo se llenara el grid view, con los datos de los proveedores
+                //Se llama al metodo listar proveedores y se guardan como el recurso de datos del grid view
                 gv_proveedores.DataSource = pv.listarProveedores();
                 gv_proveedores.DataBind();
                 lbl_info.Text = pv.Codigo + pv.Rta;
@@ -36,8 +38,11 @@ namespace Presentacion.Paginas.Proveedores
             {
                 try
                 {
-
+                    //Boton de eliminar un proveedor
+                    // Se busca el id del proveedor a eliminar por cual boton fue el que se oprimio
                     int id = Convert.ToInt32(gv_proveedores.Rows[Convert.ToInt32(e.CommandArgument)].Cells[0].Text);
+                    //Se llama al metodo de eliminar proveedor pasandole el id
+                    //Si se borra correctamente el metodo devolvera true 
                     if (pv.EliminarProveedor(id))
                     {
                         lbl_info.Text = pv.Codigo + " - " + pv.Rta;
@@ -66,6 +71,7 @@ namespace Presentacion.Paginas.Proveedores
 
         protected void btn_nuevo_proveedor_Click(object sender, EventArgs e)
         {
+            //Boton de ingresar proveedor nuevo
             Response.Redirect("ingresar_Proveedores.aspx");
         }
     }

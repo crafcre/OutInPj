@@ -90,6 +90,8 @@ namespace Negocio
         {// mostrar un listado de los movimientos
             try
             {
+                //Se llama al procedimiento almacenada de listar movimientos 
+                //Se pasan los resultados a una lista y se reenvia 
                 List<listar_MovimientosResult> lisMov = datos.listar_Movimientos().ToList();
                 Codigo = "OK";
                 Rta = "Se realizo correctamente";
