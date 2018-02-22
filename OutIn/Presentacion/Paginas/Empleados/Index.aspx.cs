@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Negocio;
+using OutInDB;
 
 namespace Presentacion.Paginas
 {
@@ -13,7 +14,16 @@ namespace Presentacion.Paginas
         Empleado emp = new Empleado();
         protected void Page_Load(object sender, EventArgs e)
         {
-            Llenartable();
+            accederEmpleadoResult usu = (accederEmpleadoResult)Session["usuario"];
+            if (usu.Cargo != "Administrador")
+            {
+                Response.Redirect("~/Paginas/inicio.aspx");
+            }
+            else
+            { 
+                Llenartable();
+            }
+
         }
         public void Llenartable()
         {

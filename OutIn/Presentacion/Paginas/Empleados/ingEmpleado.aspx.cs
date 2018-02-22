@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using Negocio;
 using System.Web.UI.WebControls;
+using OutInDB;
 
 namespace Presentacion.Paginas.Empleados
 {
@@ -13,15 +14,23 @@ namespace Presentacion.Paginas.Empleados
         Empleado emp = new Empleado();
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (dr_Cargo.Text == "")
+            accederEmpleadoResult usu = (accederEmpleadoResult)Session["usuario"];
+            if (usu.Cargo != "Administrador")
             {
-                //Se llenan los drop down list con los datos de cargo y tipo de documento
-                dr_TipoId.Items.Add("C.C.");
-                dr_TipoId.Items.Add("C.E.");
-                dr_Cargo.Items.Add("Administrador");
-                dr_Cargo.Items.Add("Cajero");
-                dr_Cargo.Items.Add("Almacenista");
+                Response.Redirect("~/Paginas/inicio.aspx");
             }
+            else
+            {
+                if (dr_Cargo.Text == "")
+                {
+                    //Se llenan los drop down list con los datos de cargo y tipo de documento
+                    dr_TipoId.Items.Add("C.C.");
+                    dr_TipoId.Items.Add("C.E.");
+                    dr_Cargo.Items.Add("Administrador");
+                    dr_Cargo.Items.Add("Cajero");
+                    dr_Cargo.Items.Add("Almacenista");
+                }
+            }          
             
         }
 

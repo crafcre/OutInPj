@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Negocio;
+using OutInDB;
 
 namespace Presentacion.Paginas.Productos
 {
@@ -13,7 +14,16 @@ namespace Presentacion.Paginas.Productos
         Categoria cat = new Categoria();
         protected void Page_Load(object sender, EventArgs e)
         {
-            llenarTabla();
+            accederEmpleadoResult usu = (accederEmpleadoResult)Session["usuario"];
+            if (usu.Cargo != "Administrador")
+            {
+                Response.Redirect("~/Paginas/inicio.aspx");
+            }
+            else
+            {
+                llenarTabla();
+            }
+            
         }
         public void llenarTabla()
         {

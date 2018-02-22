@@ -2,7 +2,11 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <asp:GridView ID="grv_OrdenCompra" runat="server" OnSelectedIndexChanged="grv_OrdenCompra_SelectedIndexChanged">
+    <asp:GridView ID="grv_OrdenCompra" runat="server" OnSelectedIndexChanged="grv_OrdenCompra_SelectedIndexChanged" AutoGenerateColumns="False">
+        <Columns>
+            <asp:BoundField DataField="op_IdOrdenPedido" HeaderText="Id" />
+            <asp:BoundField DataField="op_IdPrecioCompra" HeaderText="Precio" />
+        </Columns>
 </asp:GridView>
     <asp:Label ID="lbl_Info" runat="server" Text="Label"></asp:Label>
     <asp:Button ID="btn_ingresar" runat="server" Text="Registrar orden de compra" OnClick="btn_ingresar_click" />

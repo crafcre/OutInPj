@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Negocio;
+using OutInDB;
 
 namespace Presentacion.Paginas.Proveedores
 {
@@ -13,7 +14,12 @@ namespace Presentacion.Paginas.Proveedores
         Proveedor pv = new Proveedor();
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            accederEmpleadoResult usu = (accederEmpleadoResult)Session["usuario"];
+            if (usu.Cargo != "Administrador")
+            {
+                Response.Redirect("~/Paginas/inicio.aspx");
+            }
+            
         }
 
         protected void Btn_Registrar_Click(object sender, EventArgs e)

@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Negocio;
+using OutInDB;
 
 namespace Presentacion.Paginas.Productos
 {
@@ -14,15 +15,24 @@ namespace Presentacion.Paginas.Productos
         Categoria cat = new Categoria();
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
+            accederEmpleadoResult usu = (accederEmpleadoResult)Session["usuario"];
+            if (usu.Cargo != "Administrador")
             {
-                //Carga del select de categoria
-                //Se llama al metodo de listar categoria
-                drl_Categoria.DataSource = cat.listarCategorias();
-                drl_Categoria.DataTextField = "cat_Descripcion";
-                drl_Categoria.DataValueField = "cat_Id";
-                drl_Categoria.DataBind();
+                Response.Redirect("~/Paginas/inicio.aspx");
             }
+            else
+            {
+                     if (!IsPostBack)
+                {
+                    //Carga del select de categoria
+                    //Se llama al metodo de listar categoria
+                    drl_Categoria.DataSource = cat.listarCategorias();
+                    drl_Categoria.DataTextField = "cat_Descripcion";
+                    drl_Categoria.DataValueField = "cat_Id";
+                    drl_Categoria.DataBind();
+                }
+            }
+           
         }
 
         protected void btn_Registrar_Click(object sender, EventArgs e)
